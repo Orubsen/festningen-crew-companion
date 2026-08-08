@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { BottomNav } from "@/components/BottomNav";
+
 
 function NotFoundComponent() {
   return (
@@ -76,22 +78,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: "Festningen 2026 – Crew" },
+      {
+        name: "description",
+        content:
+          "Festivalkompanjong for Festningen 2026 i Trondheim: nedtelling, lineup, vær, reise og sjekkliste.",
+      },
+      { name: "theme-color", content: "#101319" },
+      { property: "og:title", content: "Festningen 2026 – Crew" },
+      {
+        property: "og:description",
+        content: "Nedtelling, lineup, vær, reise og sjekkliste for Festningen 4.–5. september 2026.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -100,9 +113,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="nb">
       <head>
         <HeadContent />
       </head>
@@ -114,6 +128,34 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function Footer() {
+  return (
+    <footer className="mx-auto max-w-lg px-4 pb-24 pt-2 text-center">
+      <div className="flex justify-center gap-4 text-xs font-semibold uppercase tracking-wide">
+        <a
+          href="https://festningen.no"
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent underline"
+        >
+          festningen.no
+        </a>
+        <a
+          href="https://tikkio.com/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent underline"
+        >
+          Billetter på Tikkio
+        </a>
+      </div>
+      <p className="mt-2 text-[11px] text-muted-foreground">
+        Laget for crewet · Lisbeth · Dømbe · Røsten
+      </p>
+    </footer>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -121,6 +163,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <Footer />
+      <BottomNav />
     </QueryClientProvider>
   );
 }
+

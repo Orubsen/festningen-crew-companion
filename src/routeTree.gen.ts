@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProgramRouteImport } from './routes/program'
+import { Route as ReiseRouteImport } from './routes/reise'
+import { Route as SjekklisteRouteImport } from './routes/sjekkliste'
+import { Route as VaerRouteImport } from './routes/vaer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramRoute = ProgramRouteImport.update({
+  id: '/program',
+  path: '/program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReiseRoute = ReiseRouteImport.update({
+  id: '/reise',
+  path: '/reise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SjekklisteRoute = SjekklisteRouteImport.update({
+  id: '/sjekkliste',
+  path: '/sjekkliste',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VaerRoute = VaerRouteImport.update({
+  id: '/vaer',
+  path: '/vaer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/program': typeof ProgramRoute
+  '/reise': typeof ReiseRoute
+  '/sjekkliste': typeof SjekklisteRoute
+  '/vaer': typeof VaerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/program': typeof ProgramRoute
+  '/reise': typeof ReiseRoute
+  '/sjekkliste': typeof SjekklisteRoute
+  '/vaer': typeof VaerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/program': typeof ProgramRoute
+  '/reise': typeof ReiseRoute
+  '/sjekkliste': typeof SjekklisteRoute
+  '/vaer': typeof VaerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+  id: '__root__' | '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProgramRoute: typeof ProgramRoute
+  ReiseRoute: typeof ReiseRoute
+  SjekklisteRoute: typeof SjekklisteRoute
+  VaerRoute: typeof VaerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +88,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/program': {
+      id: '/program'
+      path: '/program'
+      fullPath: '/program'
+      preLoaderRoute: typeof ProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reise': {
+      id: '/reise'
+      path: '/reise'
+      fullPath: '/reise'
+      preLoaderRoute: typeof ReiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sjekkliste': {
+      id: '/sjekkliste'
+      path: '/sjekkliste'
+      fullPath: '/sjekkliste'
+      preLoaderRoute: typeof SjekklisteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vaer': {
+      id: '/vaer'
+      path: '/vaer'
+      fullPath: '/vaer'
+      preLoaderRoute: typeof VaerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProgramRoute: ProgramRoute,
+  ReiseRoute: ReiseRoute,
+  SjekklisteRoute: SjekklisteRoute,
+  VaerRoute: VaerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
