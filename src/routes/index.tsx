@@ -4,6 +4,7 @@ import { CrewCard } from "@/components/CrewCard";
 import { CREW, FESTIVAL } from "@/data/festival";
 import starAsset from "@/assets/festningen-star.png.asset.json";
 import wordmark from "@/assets/festningen-wordmark.webp.asset.json";
+import stemningVideo from "@/assets/festningen-stemning.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,6 +49,17 @@ function Forside() {
 
       <section className="mt-6">
         <Countdown />
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 font-display text-xl uppercase">Stemning</h2>
+        <video
+          src={stemningVideo.url}
+          controls
+          playsInline
+          preload="metadata"
+          className="w-full rounded-xl border border-border bg-black"
+        />
       </section>
 
       <section className="mt-8">
