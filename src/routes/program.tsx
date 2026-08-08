@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Info, Music2 } from "lucide-react";
+import { Info } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { ArtistBilde } from "@/components/ArtistBilde";
 import { artister, DAGER } from "@/data/artister";
 import { FESTIVAL } from "@/data/festival";
 
@@ -88,9 +89,7 @@ function Program() {
       <ul className="space-y-2">
         {liste.map((a) => (
           <li key={a.navn} className="panel flex items-center gap-3 p-3">
-            <span className="grid size-9 shrink-0 place-items-center rounded-md bg-secondary text-primary">
-              <Music2 className="size-4" />
-            </span>
+            <ArtistBilde navn={a.navn} />
             <div className="min-w-0 flex-1">
               <p className="truncate font-display text-lg uppercase leading-none">{a.navn}</p>
               <p className="mt-1 text-[11px] uppercase tracking-wide text-muted-foreground">
