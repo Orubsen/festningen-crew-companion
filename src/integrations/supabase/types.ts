@@ -14,7 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_meldinger: {
+        Row: {
+          avsender: string
+          created_at: string
+          id: string
+          tekst: string
+        }
+        Insert: {
+          avsender: string
+          created_at?: string
+          id?: string
+          tekst: string
+        }
+        Update: {
+          avsender?: string
+          created_at?: string
+          id?: string
+          tekst?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
