@@ -17,7 +17,7 @@ import dombeBilde from "@/assets/crew-dombe.png.asset.json";
 import rostenBilde from "@/assets/crew-rosten.webp.asset.json";
 
 export const CREW = [
-  { id: "lisbeth", navn: "Lisbeth", bilde: lisbethBilde.url },
+  { id: "lisbeth", navn: "Lisbeth", bilde: lisbethBilde.url, bildePosisjon: "50% 18%" },
   { id: "dombe", navn: "Dømbe", bilde: dombeBilde.url },
   { id: "rosten", navn: "Røsten", bilde: rostenBilde.url },
 ] as const;

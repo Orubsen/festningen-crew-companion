@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Camera, User } from "lucide-react";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 
-export function CrewCard({ id, navn, standardBilde }: { id: string; navn: string; standardBilde?: string }) {
+export function CrewCard({ id, navn, standardBilde, bildePosisjon }: { id: string; navn: string; standardBilde?: string; bildePosisjon?: string }) {
   const [lagretBilde, setBilde, hydrated] = useLocalStorage<string | null>(`crew-bilde-${id}`, null);
   const bilde = (hydrated ? lagretBilde : null) ?? standardBilde ?? null;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -30,7 +30,12 @@ export function CrewCard({ id, navn, standardBilde }: { id: string; navn: string
         aria-label={`Last opp bilde av ${navn}`}
       >
         {bilde ? (
-          <img src={bilde} alt={navn} className="size-full object-cover" />
+          <img
+            src={bilde}
+            alt={navn}
+            className="size-full object-cover"
+            style={bilde === standardBilde && bildePosisjon ? { objectPosition: bildePosisjon } : undefined}
+          />
 
         ) : (
           <span className="flex size-full items-center justify-center text-muted-foreground">
