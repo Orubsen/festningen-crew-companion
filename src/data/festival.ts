@@ -10,6 +10,8 @@ export const FESTIVAL = {
   nettsted: "https://festningen.no",
   programUrl: "https://festningen.no/program",
   hotellUrl: "https://www.booking.com/searchresults.no.html?ss=Trondheim",
+  spotifyPlaylistId: "2AGRakDy7HpScTuImANnok",
+  spotifyUrl: "https://open.spotify.com/playlist/2AGRakDy7HpScTuImANnok",
 };
 
 import lisbethBilde from "@/assets/crew-lisbeth.png.asset.json";
@@ -17,7 +19,7 @@ import dombeBilde from "@/assets/crew-dombe.png.asset.json";
 import rostenBilde from "@/assets/crew-rosten.webp.asset.json";
 
 export const CREW = [
-  { id: "lisbeth", navn: "Lisbeth", bilde: lisbethBilde.url, bildePosisjon: "50% 18%" },
+  { id: "lisbeth", navn: "Lisbeth", bilde: lisbethBilde.url, bildePosisjon: "50% 20%" },
   { id: "dombe", navn: "Dømbe", bilde: dombeBilde.url },
   { id: "rosten", navn: "Røsten", bilde: rostenBilde.url },
 ] as const;
