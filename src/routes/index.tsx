@@ -51,37 +51,55 @@ function Forside() {
         <Countdown />
       </section>
 
-      <section className="mt-8">
-        <h2 className="mb-3 font-display text-xl uppercase">Stemning</h2>
-        <video
-          src={stemningVideo.url}
-          controls
-          playsInline
-          preload="metadata"
-          className="w-full rounded-xl border border-border bg-black"
-        />
+      <section className="mt-8 space-y-3">
+        <details className="panel group overflow-hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3">
+            <span className="font-display text-lg uppercase">🎬 Stemning</span>
+            <span className="text-[11px] uppercase tracking-wide text-muted-foreground group-open:hidden">
+              Vis video
+            </span>
+            <span className="hidden text-[11px] uppercase tracking-wide text-muted-foreground group-open:inline">
+              Skjul
+            </span>
+          </summary>
+          <div className="px-3 pb-3">
+            <video
+              src={stemningVideo.url}
+              controls
+              playsInline
+              preload="none"
+              className="w-full rounded-lg border border-border bg-black"
+            />
+          </div>
+        </details>
+
+        <details className="panel group overflow-hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3">
+            <span className="font-display text-lg uppercase">🎧 Spilleliste</span>
+            <a
+              href={FESTIVAL.spotifyUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="text-[11px] uppercase tracking-wide text-muted-foreground underline"
+            >
+              Åpne i Spotify
+            </a>
+          </summary>
+          <div className="px-3 pb-3">
+            <iframe
+              title="Festningen 2026 Spotify-spilleliste"
+              src={`https://open.spotify.com/embed/playlist/${FESTIVAL.spotifyPlaylistId}?utm_source=generator&theme=0`}
+              width="100%"
+              height="152"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              className="w-full rounded-lg border border-border"
+            />
+          </div>
+        </details>
       </section>
 
-      <section className="mt-8">
-        <h2 className="mb-3 font-display text-xl uppercase">Spilleliste</h2>
-        <iframe
-          title="Festningen 2026 Spotify-spilleliste"
-          src={`https://open.spotify.com/embed/playlist/${FESTIVAL.spotifyPlaylistId}?utm_source=generator&theme=0`}
-          width="100%"
-          height="352"
-          loading="lazy"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          className="w-full rounded-xl border border-border"
-        />
-        <a
-          href={FESTIVAL.spotifyUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-2 block text-center text-[11px] uppercase tracking-wide text-muted-foreground underline"
-        >
-          Åpne i Spotify
-        </a>
-      </section>
 
 
       <section className="mt-8">
