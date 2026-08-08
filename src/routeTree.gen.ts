@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProgramRouteImport } from './routes/program'
 import { Route as ReiseRouteImport } from './routes/reise'
+import { Route as SjekklisteRouteImport } from './routes/sjekkliste'
 import { Route as VaerRouteImport } from './routes/vaer'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const ReiseRoute = ReiseRouteImport.update({
   path: '/reise',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SjekklisteRoute = SjekklisteRouteImport.update({
+  id: '/sjekkliste',
+  path: '/sjekkliste',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VaerRoute = VaerRouteImport.update({
   id: '/vaer',
   path: '/vaer',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
+  '/sjekkliste': typeof SjekklisteRoute
   '/vaer': typeof VaerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
+  '/sjekkliste': typeof SjekklisteRoute
   '/vaer': typeof VaerRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
+  '/sjekkliste': typeof SjekklisteRoute
   '/vaer': typeof VaerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/program' | '/reise' | '/vaer'
+  fullPaths: '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/program' | '/reise' | '/vaer'
-  id: '__root__' | '/' | '/program' | '/reise' | '/vaer'
+  to: '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+  id: '__root__' | '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProgramRoute: typeof ProgramRoute
   ReiseRoute: typeof ReiseRoute
+  SjekklisteRoute: typeof SjekklisteRoute
   VaerRoute: typeof VaerRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReiseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sjekkliste': {
+      id: '/sjekkliste'
+      path: '/sjekkliste'
+      fullPath: '/sjekkliste'
+      preLoaderRoute: typeof SjekklisteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vaer': {
       id: '/vaer'
       path: '/vaer'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProgramRoute: ProgramRoute,
   ReiseRoute: ReiseRoute,
+  SjekklisteRoute: SjekklisteRoute,
   VaerRoute: VaerRoute,
 }
 export const routeTree = rootRouteImport
