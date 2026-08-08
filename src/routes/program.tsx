@@ -28,20 +28,12 @@ function Program() {
   const [søk, setSøk] = useState("");
 
   const liste = useMemo(() => {
-    return artister
-      .filter((a) => {
-        if (søk && !a.navn.toLowerCase().includes(søk.toLowerCase())) return false;
-        if (filter === "alle") return true;
-        if (filter === "ikke-annonsert") return a.dag === null;
-        return a.dag === filter;
-      })
-      .sort((a, b) => {
-        if (a.dag && b.dag && a.dag !== b.dag) return a.dag < b.dag ? -1 : 1;
-        if (a.klokkeslett && b.klokkeslett) return a.klokkeslett.localeCompare(b.klokkeslett);
-        if (a.klokkeslett) return -1;
-        if (b.klokkeslett) return 1;
-        return a.navn.localeCompare(b.navn, "nb");
-      });
+    return artister.filter((a) => {
+      if (søk && !a.navn.toLowerCase().includes(søk.toLowerCase())) return false;
+      if (filter === "alle") return true;
+      if (filter === "ikke-annonsert") return a.dag === null;
+      return a.dag === filter;
+    });
   }, [filter, søk]);
 
   const filtre: { verdi: Filter; navn: string }[] = [
@@ -55,7 +47,8 @@ function Program() {
       <div className="panel mb-4 flex gap-3 border-l-4 border-l-accent p-3">
         <Info className="mt-0.5 size-5 shrink-0 text-accent" />
         <p className="text-xs leading-relaxed">
-          Fullstendig program med dag og klokkeslett publiseres nærmere festivalstart på{" "}
+          Dagsfordelingen er sluppet: dørene åpner <strong>fredag kl. 15:30</strong> og{" "}
+          <strong>lørdag kl. 15:00</strong>. Klokkeslett per artist kommer nærmere festivalstart på{" "}
           <a
             href={FESTIVAL.programUrl}
             target="_blank"
