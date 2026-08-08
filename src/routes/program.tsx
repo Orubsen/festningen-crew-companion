@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Info, Music2 } from "lucide-react";
+import { Info } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { ArtistBilde } from "@/components/ArtistBilde";
 import { artister, DAGER } from "@/data/artister";
 import { FESTIVAL } from "@/data/festival";
 
