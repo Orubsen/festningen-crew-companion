@@ -43,7 +43,7 @@ export function CrewCard({ id, navn, standardBilde }: { id: string; navn: string
       </button>
       <p className="font-display text-lg uppercase leading-none">{navn}</p>
       {feil && <p className="text-[10px] text-destructive">{feil}</p>}
-      {bilde && (
+      {lagretBilde && (
         <button
           type="button"
           onClick={() => setBilde(null)}
