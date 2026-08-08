@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import rostenEntLogo from "@/assets/rosten-ent-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { BottomNav } from "@/components/BottomNav";
 
@@ -149,9 +150,23 @@ function Footer() {
           Billetter på Tikkio
         </a>
       </div>
-      <p className="mt-2 text-[11px] text-muted-foreground">
-        Laget for crewet · Lisbeth · Dømbe · Røsten
-      </p>
+      <div className="mt-3 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
+        <a href="http://xn--rubenrsten-5cb.no/" target="_blank" rel="noreferrer" className="shrink-0">
+          <img src={rostenEntLogo.url} alt="RØSTEN ENT. logo" className="size-8" />
+        </a>
+        <p>
+          Laget for · Lisbeth · Dømbe · Røsten av{" "}
+          <a
+            href="http://xn--rubenrsten-5cb.no/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-accent underline"
+          >
+            RØSTEN ENT.
+          </a>
+        </p>
+      </div>
+
     </footer>
   );
 }
