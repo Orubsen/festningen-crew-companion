@@ -93,13 +93,19 @@ function Chat() {
     if (!kanSende) return;
     setSender(true);
     setFeil(null);
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from("chat_meldinger")
-      .insert({ avsender: navn.trim().slice(0, 40), tekst: tekst.trim().slice(0, 2000) });
+      .insert({ avsender: navn.trim().slice(0, 40), tekst: tekst.trim().slice(0, 2000) })
+      .select("id, avsender, tekst, created_at")
+      .single();
     setSender(false);
     if (error) {
       setFeil("Meldingen ble ikke sendt. Prøv igjen.");
       return;
+    }
+    if (data) {
+      const ny = data as Melding;
+      setMeldinger((prev) => (prev.some((m) => m.id === ny.id) ? prev : [...prev, ny]));
     }
     setTekst("");
     inputRef.current?.focus();
