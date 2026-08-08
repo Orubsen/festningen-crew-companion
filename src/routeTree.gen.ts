@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as ProgramRouteImport } from './routes/program'
 import { Route as ReiseRouteImport } from './routes/reise'
 import { Route as SjekklisteRouteImport } from './routes/sjekkliste'
@@ -18,6 +19,11 @@ import { Route as VaerRouteImport } from './routes/vaer'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramRoute = ProgramRouteImport.update({
@@ -43,6 +49,7 @@ const VaerRoute = VaerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -65,14 +74,16 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+  fullPaths: '/' | '/chat' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
-  id: '__root__' | '/' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+  to: '/' | '/chat' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+  id:
+    '__root__' | '/' | '/chat' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatRoute: typeof ChatRoute
   ProgramRoute: typeof ProgramRoute
   ReiseRoute: typeof ReiseRoute
   SjekklisteRoute: typeof SjekklisteRoute
@@ -86,6 +97,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/program': {
@@ -121,6 +139,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatRoute: ChatRoute,
   ProgramRoute: ProgramRoute,
   ReiseRoute: ReiseRoute,
   SjekklisteRoute: SjekklisteRoute,

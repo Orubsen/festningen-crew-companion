@@ -151,7 +151,7 @@ function Chat() {
   }
 
   return (
-    <PageShell tittel="Crew-chat" undertittel={navn ? `Du skriver som ${navn}` : undefined}>
+    <PageShell tittel="Crew-chat" undertittel={`Du skriver som ${navn || "gjest"}`}>
       <div className="panel flex h-[calc(100dvh-16rem)] min-h-[20rem] flex-col overflow-hidden">
         <div className="flex-1 space-y-3 overflow-y-auto p-3">
           {laster && <p className="text-sm text-muted-foreground">Laster meldinger …</p>}
