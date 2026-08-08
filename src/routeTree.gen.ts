@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as HotellRouteImport } from './routes/hotell'
+import { Route as OlpriserRouteImport } from './routes/olpriser'
 import { Route as ProgramRouteImport } from './routes/program'
 import { Route as ReiseRouteImport } from './routes/reise'
 import { Route as SjekklisteRouteImport } from './routes/sjekkliste'
@@ -30,6 +31,11 @@ const ChatRoute = ChatRouteImport.update({
 const HotellRoute = HotellRouteImport.update({
   id: '/hotell',
   path: '/hotell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OlpriserRoute = OlpriserRouteImport.update({
+  id: '/olpriser',
+  path: '/olpriser',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramRoute = ProgramRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
   '/hotell': typeof HotellRoute
+  '/olpriser': typeof OlpriserRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
   '/hotell': typeof HotellRoute
+  '/olpriser': typeof OlpriserRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
   '/hotell': typeof HotellRoute
+  '/olpriser': typeof OlpriserRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -84,15 +93,30 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/chat' | '/hotell' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+    | '/'
+    | '/chat'
+    | '/hotell'
+    | '/olpriser'
+    | '/program'
+    | '/reise'
+    | '/sjekkliste'
+    | '/vaer'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/chat' | '/hotell' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+    | '/'
+    | '/chat'
+    | '/hotell'
+    | '/olpriser'
+    | '/program'
+    | '/reise'
+    | '/sjekkliste'
+    | '/vaer'
   id:
     | '__root__'
     | '/'
     | '/chat'
     | '/hotell'
+    | '/olpriser'
     | '/program'
     | '/reise'
     | '/sjekkliste'
@@ -103,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChatRoute: typeof ChatRoute
   HotellRoute: typeof HotellRoute
+  OlpriserRoute: typeof OlpriserRoute
   ProgramRoute: typeof ProgramRoute
   ReiseRoute: typeof ReiseRoute
   SjekklisteRoute: typeof SjekklisteRoute
@@ -130,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/hotell'
       fullPath: '/hotell'
       preLoaderRoute: typeof HotellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/olpriser': {
+      id: '/olpriser'
+      path: '/olpriser'
+      fullPath: '/olpriser'
+      preLoaderRoute: typeof OlpriserRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/program': {
@@ -167,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChatRoute: ChatRoute,
   HotellRoute: HotellRoute,
+  OlpriserRoute: OlpriserRoute,
   ProgramRoute: ProgramRoute,
   ReiseRoute: ReiseRoute,
   SjekklisteRoute: SjekklisteRoute,
@@ -175,13 +208,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
