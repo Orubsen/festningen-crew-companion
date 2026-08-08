@@ -80,17 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: "Festningen 2026 – Crew" },
+      { title: "Festningen 2026 – Crew | Festivalguide Trondheim" },
       {
         name: "description",
         content:
-          "Festivalkompanjong for Festningen 2026 i Trondheim: nedtelling, lineup, vær, reise og sjekkliste.",
+          "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
       },
       { name: "theme-color", content: "#101319" },
-      { property: "og:title", content: "Festningen 2026 – Crew" },
+      { property: "og:title", content: "Festningen 2026 – Crew | Festivalguide Trondheim" },
       {
         property: "og:description",
-        content: "Nedtelling, lineup, vær, reise og sjekkliste for Festningen 4.–5. september 2026.",
+        content:
+          "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
