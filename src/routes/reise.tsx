@@ -117,7 +117,10 @@ function Reise() {
             }}
           />
         </Kort>
+
+        <Reisekart />
       </div>
     </PageShell>
   );
 }
+
