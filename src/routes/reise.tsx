@@ -111,7 +111,7 @@ function Reise() {
           <FlyRad
             f={{
               rute: "SK4187",
-              tid: "Tid TBA",
+              tid: "19:50",
               selskap: "SAS Link",
               fly: "Embraer 195",
             }}

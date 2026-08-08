@@ -63,6 +63,28 @@ function Forside() {
       </section>
 
       <section className="mt-8">
+        <h2 className="mb-3 font-display text-xl uppercase">Spilleliste</h2>
+        <iframe
+          title="Festningen 2026 Spotify-spilleliste"
+          src={`https://open.spotify.com/embed/playlist/${FESTIVAL.spotifyPlaylistId}?utm_source=generator&theme=0`}
+          width="100%"
+          height="352"
+          loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          className="w-full rounded-xl border border-border"
+        />
+        <a
+          href={FESTIVAL.spotifyUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 block text-center text-[11px] uppercase tracking-wide text-muted-foreground underline"
+        >
+          Åpne i Spotify
+        </a>
+      </section>
+
+
+      <section className="mt-8">
         <h2 className="mb-3 font-display text-xl uppercase">Crewet</h2>
         <div className="grid grid-cols-3 gap-3">
           {CREW.map((c) => (
