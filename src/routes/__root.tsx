@@ -114,7 +114,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="nb">
       <head>
         <HeadContent />
       </head>
@@ -126,6 +126,34 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function Footer() {
+  return (
+    <footer className="mx-auto max-w-lg px-4 pb-24 pt-2 text-center">
+      <div className="flex justify-center gap-4 text-xs font-semibold uppercase tracking-wide">
+        <a
+          href="https://festningen.no"
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent underline"
+        >
+          festningen.no
+        </a>
+        <a
+          href="https://tikkio.com/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent underline"
+        >
+          Billetter på Tikkio
+        </a>
+      </div>
+      <p className="mt-2 text-[11px] text-muted-foreground">
+        Laget for crewet · Lisbeth · Dømbe · Røsten
+      </p>
+    </footer>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -133,6 +161,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <Footer />
+      <BottomNav />
     </QueryClientProvider>
   );
 }
+
