@@ -88,9 +88,7 @@ function Program() {
       <ul className="space-y-2">
         {liste.map((a) => (
           <li key={a.navn} className="panel flex items-center gap-3 p-3">
-            <span className="grid size-9 shrink-0 place-items-center rounded-md bg-secondary text-primary">
-              <Music2 className="size-4" />
-            </span>
+            <ArtistBilde navn={a.navn} />
             <div className="min-w-0 flex-1">
               <p className="truncate font-display text-lg uppercase leading-none">{a.navn}</p>
               <p className="mt-1 text-[11px] uppercase tracking-wide text-muted-foreground">
