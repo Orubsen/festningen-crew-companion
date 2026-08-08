@@ -5,7 +5,7 @@ export const FESTIVAL = {
   /** Dørene åpner fredag 4. september 2026 kl. 15:30 (Europe/Oslo = UTC+2) */
   doorsOpen: new Date("2026-09-04T15:30:00+02:00"),
   /** Siste hjemreise (Dømbe & Røsten, SK4187 mandag 7. september) */
-  hjemreise: new Date("2026-09-07T12:00:00+02:00"),
+  hjemreise: new Date("2026-09-07T19:50:00+02:00"),
   billettUrl: "https://tikkio.com/",
   nettsted: "https://festningen.no",
   programUrl: "https://festningen.no/program",
