@@ -9,16 +9,17 @@ import stemningVideo from "@/assets/festningen-stemning.mp4.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Festningen 2026 – Crew | Nedtelling og festivalguide" },
+      { title: "Festningen 2026 – Crew | Festivalguide Trondheim" },
       {
         name: "description",
         content:
           "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
       },
-      { property: "og:title", content: "Festningen 2026 – Crew" },
+      { property: "og:title", content: "Festningen 2026 – Crew | Festivalguide Trondheim" },
       {
         property: "og:description",
-        content: "Nedtelling, lineup, vær, reiseplan og sjekkliste for Festningen 4.–5. september 2026.",
+        content:
+          "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
       },
     ],
   }),
