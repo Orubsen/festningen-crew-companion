@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Countdown } from "@/components/Countdown";
 import { CrewCard } from "@/components/CrewCard";
+import { InstallApp } from "@/components/InstallApp";
 import { CREW, FESTIVAL } from "@/data/festival";
 import starAsset from "@/assets/festningen-star.png.asset.json";
 import wordmark from "@/assets/festningen-wordmark.webp.asset.json";
@@ -9,13 +10,13 @@ import stemningVideo from "@/assets/festningen-stemning.mp4.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Festningen 2026 – Crew | Festivalguide Trondheim" },
+      { title: "Festningen 2026 – Joggegjengen | Festivalguide Trondheim" },
       {
         name: "description",
         content:
           "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
       },
-      { property: "og:title", content: "Festningen 2026 – Crew | Festivalguide Trondheim" },
+      { property: "og:title", content: "Festningen 2026 – Joggegjengen | Festivalguide Trondheim" },
       {
         property: "og:description",
         content:
@@ -47,6 +48,8 @@ function Forside() {
         </p>
         <p className="text-xs text-muted-foreground">{FESTIVAL.sted}</p>
       </section>
+
+      <InstallApp />
 
       <section className="mt-6">
         <Countdown />
