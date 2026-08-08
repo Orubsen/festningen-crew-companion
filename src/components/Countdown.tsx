@@ -59,7 +59,7 @@ export function Countdown() {
       <p className="mt-2 text-center text-xs text-muted-foreground">
         {pågår
           ? "Festningen pågår – kos dere!"
-          : "Portene åpner fredag 4. september 2026 kl. 15:00"}
+          : "Portene åpner fredag 4. september 2026 kl. 15:30"}
       </p>
     </div>
   );

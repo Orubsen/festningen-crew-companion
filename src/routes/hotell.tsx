@@ -22,7 +22,9 @@ export const Route = createFileRoute("/hotell")({
   component: HotellSide,
 });
 
-const logoToken = import.meta.env.VITE_LOVABLE_CONNECTOR_LOGO_DEV_API_KEY as string | undefined;
+const logoToken = import.meta.env["VITE_LOVABLE_CONNECTOR_LOGO_DEV_API_KEY"] as
+  | string
+  | undefined;
 
 function Logo({ h }: { h: Hotell }) {
   const [feilet, setFeilet] = useState(false);
