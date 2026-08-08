@@ -24,7 +24,7 @@ export function BottomNav() {
             <li key={to}>
               <Link
                 to={to}
-                className={`flex flex-col items-center gap-1 px-1 py-2.5 text-[10px] font-semibold uppercase tracking-wide transition-colors ${
+                className={`flex flex-col items-center gap-1 px-0.5 py-2.5 text-[9px] font-semibold uppercase tracking-tight transition-colors ${
                   active ? "text-primary" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
