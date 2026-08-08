@@ -1,12 +1,18 @@
 {
-  "name": "Festningen 2026 – Crew",
+  "name": "Festningen 2026 – Joggegjengen",
   "short_name": "Festningen 26",
+  "description": "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#101319",
   "theme_color": "#101319",
   "lang": "nb",
+  "orientation": "portrait",
   "icons": [
-    { "src": "/favicon.png", "sizes": "64x64", "type": "image/png", "purpose": "any" }
+    { "src": "/favicon.png", "sizes": "64x64", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
