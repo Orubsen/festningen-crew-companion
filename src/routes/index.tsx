@@ -49,6 +49,8 @@ function Forside() {
         <p className="text-xs text-muted-foreground">{FESTIVAL.sted}</p>
       </section>
 
+      <InstallApp />
+
       <section className="mt-6">
         <Countdown />
       </section>
