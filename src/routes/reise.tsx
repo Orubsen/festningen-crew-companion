@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Plane, Clock } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { Reisekart } from "@/components/Reisekart";
+
 
 export const Route = createFileRoute("/reise")({
   head: () => ({
