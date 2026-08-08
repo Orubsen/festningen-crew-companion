@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Plane, AlertTriangle, Clock } from "lucide-react";
+import { Plane, Clock } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
 export const Route = createFileRoute("/reise")({
@@ -9,7 +9,7 @@ export const Route = createFileRoute("/reise")({
       {
         name: "description",
         content:
-          "Fly ut og hjem for crewet: SK4154 fredag 4. september, WF1302 søndag 6. september og alternativene WF681/WF1312 mandag 7. september.",
+          "Fly ut og hjem for crewet: SK4154 fredag 4. september, WF1302 søndag 6. september og SK4187 mandag 7. september.",
       },
       { property: "og:title", content: "Reiseplan – Festningen 2026" },
       { property: "og:description", content: "Alle flyavganger for turen til Trondheim." },
@@ -111,7 +111,7 @@ function Reise() {
           <FlyRad
             f={{
               rute: "SK4187",
-              tid: "Bekreftet",
+              tid: "Tid TBA",
               selskap: "SAS Link",
               fly: "Embraer 195",
             }}
