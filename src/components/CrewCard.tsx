@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Camera, User } from "lucide-react";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 
-export function CrewCard({ id, navn }: { id: string; navn: string }) {
-  const [bilde, setBilde, hydrated] = useLocalStorage<string | null>(`crew-bilde-${id}`, null);
+export function CrewCard({ id, navn, standardBilde }: { id: string; navn: string; standardBilde?: string }) {
+  const [lagretBilde, setBilde, hydrated] = useLocalStorage<string | null>(`crew-bilde-${id}`, null);
+  const bilde = (hydrated ? lagretBilde : null) ?? standardBilde ?? null;
   const inputRef = useRef<HTMLInputElement>(null);
   const [feil, setFeil] = useState<string | null>(null);
 
