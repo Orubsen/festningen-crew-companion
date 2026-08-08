@@ -22,7 +22,7 @@ const LON = 10.3951;
 export const hentVaer = createServerFn({ method: "GET" }).handler(
   async (): Promise<WeatherResponse> => {
     const res = await fetch(
-      `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${LAT}&lon=${LON}`,
+      `https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${LAT}&lon=${LON}`,
       {
         headers: {
           "User-Agent": "Festningen2026Crew/1.0 (personlig festivalapp; kontakt via festningen.no)",
