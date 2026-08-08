@@ -12,8 +12,12 @@ export const FESTIVAL = {
   hotellUrl: "https://www.booking.com/searchresults.no.html?ss=Trondheim",
 };
 
+import lisbethBilde from "@/assets/crew-lisbeth.png.asset.json";
+import dombeBilde from "@/assets/crew-dombe.png.asset.json";
+import rostenBilde from "@/assets/crew-rosten.webp.asset.json";
+
 export const CREW = [
-  { id: "lisbeth", navn: "Lisbeth" },
-  { id: "dombe", navn: "Dømbe" },
-  { id: "rosten", navn: "Røsten" },
+  { id: "lisbeth", navn: "Lisbeth", bilde: lisbethBilde.url },
+  { id: "dombe", navn: "Dømbe", bilde: dombeBilde.url },
+  { id: "rosten", navn: "Røsten", bilde: rostenBilde.url },
 ] as const;

@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Camera, User } from "lucide-react";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 
-export function CrewCard({ id, navn }: { id: string; navn: string }) {
-  const [bilde, setBilde, hydrated] = useLocalStorage<string | null>(`crew-bilde-${id}`, null);
+export function CrewCard({ id, navn, standardBilde }: { id: string; navn: string; standardBilde?: string }) {
+  const [lagretBilde, setBilde, hydrated] = useLocalStorage<string | null>(`crew-bilde-${id}`, null);
+  const bilde = (hydrated ? lagretBilde : null) ?? standardBilde ?? null;
   const inputRef = useRef<HTMLInputElement>(null);
   const [feil, setFeil] = useState<string | null>(null);
 
@@ -28,8 +29,9 @@ export function CrewCard({ id, navn }: { id: string; navn: string }) {
         className="group relative aspect-square w-full overflow-hidden rounded-md border border-border bg-secondary"
         aria-label={`Last opp bilde av ${navn}`}
       >
-        {hydrated && bilde ? (
+        {bilde ? (
           <img src={bilde} alt={navn} className="size-full object-cover" />
+
         ) : (
           <span className="flex size-full items-center justify-center text-muted-foreground">
             <User className="size-8" />
@@ -41,7 +43,7 @@ export function CrewCard({ id, navn }: { id: string; navn: string }) {
       </button>
       <p className="font-display text-lg uppercase leading-none">{navn}</p>
       {feil && <p className="text-[10px] text-destructive">{feil}</p>}
-      {bilde && (
+      {lagretBilde && (
         <button
           type="button"
           onClick={() => setBilde(null)}

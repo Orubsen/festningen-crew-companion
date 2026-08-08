@@ -54,7 +54,7 @@ function Forside() {
         <h2 className="mb-3 font-display text-xl uppercase">Crewet</h2>
         <div className="grid grid-cols-3 gap-3">
           {CREW.map((c) => (
-            <CrewCard key={c.id} id={c.id} navn={c.navn} />
+            <CrewCard key={c.id} id={c.id} navn={c.navn} standardBilde={c.bilde} />
           ))}
         </div>
         <p className="mt-2 text-center text-[11px] text-muted-foreground">
