@@ -29,8 +29,9 @@ export function CrewCard({ id, navn, standardBilde }: { id: string; navn: string
         className="group relative aspect-square w-full overflow-hidden rounded-md border border-border bg-secondary"
         aria-label={`Last opp bilde av ${navn}`}
       >
-        {hydrated && bilde ? (
+        {bilde ? (
           <img src={bilde} alt={navn} className="size-full object-cover" />
+
         ) : (
           <span className="flex size-full items-center justify-center text-muted-foreground">
             <User className="size-8" />
