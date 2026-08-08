@@ -94,8 +94,10 @@ function Program() {
             <div className="min-w-0 flex-1">
               <p className="truncate font-display text-lg uppercase leading-none">{a.navn}</p>
               <p className="mt-1 text-[11px] uppercase tracking-wide text-muted-foreground">
-                {a.dag && a.klokkeslett
-                  ? `${a.dag} · kl. ${a.klokkeslett}${a.scene ? ` · ${a.scene}` : ""}`
+                {a.dag
+                  ? `${a.dag}${a.klokkeslett ? ` · kl. ${a.klokkeslett}` : " · tid ikke annonsert"}${
+                      a.scene ? ` · ${a.scene}` : ""
+                    }`
                   : "Ikke annonsert ennå"}
               </p>
             </div>

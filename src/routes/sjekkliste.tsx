@@ -62,8 +62,7 @@ function Banner({
           <div className="mt-3 flex flex-wrap gap-2">
             <a
               href={lenke}
-              target="_blank"
-              rel="noreferrer"
+              {...(lenke.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
               className="inline-flex items-center gap-1.5 rounded-md border border-border bg-secondary px-3 py-2 text-xs font-semibold uppercase tracking-wide"
             >
               {lenketekst} <ExternalLink className="size-3.5" />
@@ -95,9 +94,9 @@ function Sjekkliste() {
           emoji="🏨"
           tittel="Hotell er IKKE bestilt ennå"
           ordnetTittel="Hotell er bestilt"
-          beskrivelse="Vi trenger overnatting i Trondheim fra 4. til 7. september 2026. Book før prisene stiger."
-          lenke={FESTIVAL.hotellUrl}
-          lenketekst="Søk hotell i Trondheim"
+          beskrivelse="Vi trenger overnatting i Trondheim fra 4. til 7. september 2026. Se de aktuelle hotellene og leilighetene med ferdig utfylte datoer."
+          lenke="/hotell"
+          lenketekst="Se hotellforslag"
         />
         <Banner
           id="billetter"
