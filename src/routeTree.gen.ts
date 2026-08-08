@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChatRouteImport } from './routes/chat'
+import { Route as HotellRouteImport } from './routes/hotell'
 import { Route as ProgramRouteImport } from './routes/program'
 import { Route as ReiseRouteImport } from './routes/reise'
 import { Route as SjekklisteRouteImport } from './routes/sjekkliste'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const ChatRoute = ChatRouteImport.update({
   id: '/chat',
   path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HotellRoute = HotellRouteImport.update({
+  id: '/hotell',
+  path: '/hotell',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramRoute = ProgramRouteImport.update({
@@ -50,6 +56,7 @@ const VaerRoute = VaerRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/hotell': typeof HotellRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/hotell': typeof HotellRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/hotell': typeof HotellRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
   '/sjekkliste': typeof SjekklisteRoute
@@ -74,16 +83,26 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/chat' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+  fullPaths:
+    '/' | '/chat' | '/hotell' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/chat' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+  to:
+    '/' | '/chat' | '/hotell' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
   id:
-    '__root__' | '/' | '/chat' | '/program' | '/reise' | '/sjekkliste' | '/vaer'
+    | '__root__'
+    | '/'
+    | '/chat'
+    | '/hotell'
+    | '/program'
+    | '/reise'
+    | '/sjekkliste'
+    | '/vaer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChatRoute: typeof ChatRoute
+  HotellRoute: typeof HotellRoute
   ProgramRoute: typeof ProgramRoute
   ReiseRoute: typeof ReiseRoute
   SjekklisteRoute: typeof SjekklisteRoute
@@ -104,6 +123,13 @@ declare module '@tanstack/react-router' {
       path: '/chat'
       fullPath: '/chat'
       preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hotell': {
+      id: '/hotell'
+      path: '/hotell'
+      fullPath: '/hotell'
+      preLoaderRoute: typeof HotellRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/program': {
@@ -140,6 +166,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChatRoute: ChatRoute,
+  HotellRoute: HotellRoute,
   ProgramRoute: ProgramRoute,
   ReiseRoute: ReiseRoute,
   SjekklisteRoute: SjekklisteRoute,

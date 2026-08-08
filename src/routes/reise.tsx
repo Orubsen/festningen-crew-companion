@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Plane, AlertTriangle, Clock } from "lucide-react";
+import { Plane, Clock } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 
 export const Route = createFileRoute("/reise")({
@@ -9,7 +9,7 @@ export const Route = createFileRoute("/reise")({
       {
         name: "description",
         content:
-          "Fly ut og hjem for crewet: SK4154 fredag 4. september, WF1302 søndag 6. september og alternativene WF681/WF1312 mandag 7. september.",
+          "Fly ut og hjem for crewet: SK4154 fredag 4. september, WF1302 søndag 6. september og SK4187 mandag 7. september.",
       },
       { property: "og:title", content: "Reiseplan – Festningen 2026" },
       { property: "og:description", content: "Alle flyavganger for turen til Trondheim." },
@@ -108,29 +108,12 @@ function Reise() {
           dato="Mandag 7. september 2026"
           hvem="Dømbe og Røsten"
         >
-          <div className="mb-1 flex items-center gap-2 rounded-md border border-primary/50 bg-primary/10 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-primary">
-            <AlertTriangle className="size-4 shrink-0" />
-            Ikke endelig bestemt ennå
-          </div>
           <FlyRad
-            usikker
             f={{
-              rute: "WF681",
-              tid: "17:10",
-              selskap: "Widerøe",
-              fly: "De Havilland DHC-8 400",
-            }}
-          />
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            eller
-          </p>
-          <FlyRad
-            usikker
-            f={{
-              rute: "WF1312",
-              tid: "18:35",
-              selskap: "Widerøe",
-              fly: "De Havilland DHC-8 400",
+              rute: "SK4187",
+              tid: "Tid TBA",
+              selskap: "SAS Link",
+              fly: "Embraer 195",
             }}
           />
         </Kort>
