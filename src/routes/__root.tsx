@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import rostenEntLogo from "@/assets/rosten-ent-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 import { BottomNav } from "@/components/BottomNav";
 
 
