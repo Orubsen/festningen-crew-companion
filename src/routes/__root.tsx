@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import rostenEntLogo from "@/assets/rosten-ent-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 import { BottomNav } from "@/components/BottomNav";
 
 
@@ -174,6 +175,19 @@ function Footer() {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    initAnalytics();
+
+    const unsubscribe = router.subscribe("onResolved", (event) => {
+      trackPageView(event.toLocation.pathname);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
