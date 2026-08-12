@@ -6,31 +6,11 @@ declare global {
 }
 
 const measurementId = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY"];
-let initialized = false;
 
 export function initAnalytics() {
-  if (typeof window === "undefined") return;
-  if (initialized) return;
-  if (!measurementId) {
-    console.warn("Google Analytics measurement ID is not configured");
-    return;
-  }
-
-  initialized = true;
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer.push(args);
-  };
-  window.gtag("js", new Date());
-  window.gtag("config", measurementId, {
-    send_page_view: false,
-  });
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script);
+  // Google tag (gtag.js) is loaded inline in src/routes/__root.tsx so it is
+  // present in the initial HTML even before React hydrates. This function is
+  // kept as a no-op hook for compatibility with the root component.
 }
 
 export function trackPageView(path: string) {
