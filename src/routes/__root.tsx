@@ -175,6 +175,19 @@ function Footer() {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    initAnalytics();
+
+    const unsubscribe = router.subscribe("onResolved", (event) => {
+      trackPageView(event.toLocation.pathname);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
