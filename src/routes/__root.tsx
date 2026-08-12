@@ -88,6 +88,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
       },
       { name: "theme-color", content: "#101319" },
+      {
+        name: "google-site-verification",
+        content: "4uPFfW44ywKty07OSgXpXm8L7zUU7Sc0EK4A1IOoSdI",
+      },
       { property: "og:title", content: "Festningen 2026 – Joggegjengen | Festivalguide Trondheim" },
       {
         property: "og:description",
