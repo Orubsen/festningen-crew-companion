@@ -15,6 +15,7 @@ import { Route as HotellRouteImport } from './routes/hotell'
 import { Route as OlpriserRouteImport } from './routes/olpriser'
 import { Route as ProgramRouteImport } from './routes/program'
 import { Route as ReiseRouteImport } from './routes/reise'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SjekklisteRouteImport } from './routes/sjekkliste'
 import { Route as VaerRouteImport } from './routes/vaer'
 
@@ -48,6 +49,11 @@ const ReiseRoute = ReiseRouteImport.update({
   path: '/reise',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SjekklisteRoute = SjekklisteRouteImport.update({
   id: '/sjekkliste',
   path: '/sjekkliste',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/olpriser': typeof OlpriserRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sjekkliste': typeof SjekklisteRoute
   '/vaer': typeof VaerRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/olpriser': typeof OlpriserRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sjekkliste': typeof SjekklisteRoute
   '/vaer': typeof VaerRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/olpriser': typeof OlpriserRoute
   '/program': typeof ProgramRoute
   '/reise': typeof ReiseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sjekkliste': typeof SjekklisteRoute
   '/vaer': typeof VaerRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/olpriser'
     | '/program'
     | '/reise'
+    | '/sitemap.xml'
     | '/sjekkliste'
     | '/vaer'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/olpriser'
     | '/program'
     | '/reise'
+    | '/sitemap.xml'
     | '/sjekkliste'
     | '/vaer'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/olpriser'
     | '/program'
     | '/reise'
+    | '/sitemap.xml'
     | '/sjekkliste'
     | '/vaer'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   OlpriserRoute: typeof OlpriserRoute
   ProgramRoute: typeof ProgramRoute
   ReiseRoute: typeof ReiseRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SjekklisteRoute: typeof SjekklisteRoute
   VaerRoute: typeof VaerRoute
 }
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReiseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sjekkliste': {
       id: '/sjekkliste'
       path: '/sjekkliste'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   OlpriserRoute: OlpriserRoute,
   ProgramRoute: ProgramRoute,
   ReiseRoute: ReiseRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SjekklisteRoute: SjekklisteRoute,
   VaerRoute: VaerRoute,
 }
