@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Plane, Clock } from "lucide-react";
+import { Plane, Clock, ExternalLink } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { Reisekart } from "@/components/Reisekart";
 
