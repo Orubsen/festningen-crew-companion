@@ -33,6 +33,7 @@ type Fly = {
   referanse?: string;
   varighet?: string;
   status?: string;
+  lenke?: string;
 };
 
 function FlyRad({ f, usikker }: { f: Fly; usikker?: boolean }) {
