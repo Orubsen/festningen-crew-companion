@@ -27,7 +27,7 @@ type Fly = {
   rute: string;
   tid: string;
   selskap: string;
-  fly: string;
+  fly?: string;
   fra?: string;
   til?: string;
   referanse?: string;
@@ -56,7 +56,8 @@ function FlyRad({ f, usikker }: { f: Fly; usikker?: boolean }) {
           </p>
         )}
         <p>
-          {f.selskap} · {f.fly}
+          {f.selskap}
+          {f.fly ? ` · ${f.fly}` : ""}
           {f.varighet ? ` · ${f.varighet}` : ""}
         </p>
         {f.referanse && (
@@ -133,7 +134,6 @@ function Reise() {
               fra: "Trondheim-Værnes (TRD), Trondheim",
               til: "Flesland (BGO), Bergen",
               selskap: "Norwegian Air Shuttle",
-              fly: "Boeing 737",
               referanse: "XA7OZD",
               varighet: "1h 0m",
               status: "Bekreftet",
