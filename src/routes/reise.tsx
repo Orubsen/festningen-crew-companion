@@ -3,7 +3,6 @@ import { Plane, Clock } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { Reisekart } from "@/components/Reisekart";
 
-
 export const Route = createFileRoute("/reise")({
   head: () => ({
     meta: [
@@ -11,10 +10,14 @@ export const Route = createFileRoute("/reise")({
       {
         name: "description",
         content:
-          "Fly ut og hjem for crewet: SK4154 fredag 4. september, WF1302 søndag 6. september og SK4187 mandag 7. september.",
+          "Fly ut og hjem for crewet: SK4154 fredag 4. september, DY173 søndag 6. september (Lisbeth) og SK4187 mandag 7. september (Dømbe og Røsten).",
       },
       { property: "og:title", content: "Reiseplan – Festningen 2026" },
-      { property: "og:description", content: "Alle flyavganger for turen til Trondheim." },
+      {
+        property: "og:description",
+        content:
+          "Fly ut og hjem for crewet: SK4154 fredag 4. september, DY173 søndag 6. september og SK4187 mandag 7. september.",
+      },
     ],
   }),
   component: Reise,
@@ -24,7 +27,12 @@ type Fly = {
   rute: string;
   tid: string;
   selskap: string;
-  fly: string;
+  fly?: string;
+  fra?: string;
+  til?: string;
+  referanse?: string;
+  varighet?: string;
+  status?: string;
 };
 
 function FlyRad({ f, usikker }: { f: Fly; usikker?: boolean }) {
@@ -41,9 +49,23 @@ function FlyRad({ f, usikker }: { f: Fly; usikker?: boolean }) {
           {f.tid}
         </p>
       </div>
-      <p className="mt-1.5 text-xs text-muted-foreground">
-        {f.selskap} · {f.fly}
-      </p>
+      <div className="mt-1.5 space-y-0.5 text-xs text-muted-foreground">
+        {f.fra && f.til && (
+          <p>
+            {f.fra} → {f.til}
+          </p>
+        )}
+        <p>
+          {f.selskap}
+          {f.fly ? ` · ${f.fly}` : ""}
+          {f.varighet ? ` · ${f.varighet}` : ""}
+        </p>
+        {f.referanse && (
+          <p>
+            Ref. {f.referanse} · {f.status || "Bekreftet"}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -86,7 +108,17 @@ function Reise() {
           hvem="Lisbeth, Dømbe og Røsten"
         >
           <FlyRad
-            f={{ rute: "SK4154", tid: "09:35", selskap: "SAS Link", fly: "Embraer 195" }}
+            f={{
+              rute: "SK4154",
+              tid: "08:35–09:35",
+              fra: "Flesland (BGO), Bergen",
+              til: "Trondheim-Værnes (TRD), Trondheim",
+              selskap: "Scandinavian Airlines",
+              fly: "SAS Link",
+              referanse: "XA82SJ",
+              varighet: "1h 0m",
+              status: "Bekreftet",
+            }}
           />
         </Kort>
 
@@ -97,10 +129,14 @@ function Reise() {
         >
           <FlyRad
             f={{
-              rute: "WF1302",
-              tid: "08:50",
-              selskap: "Widerøe",
-              fly: "De Havilland DHC-8 400",
+              rute: "DY173",
+              tid: "09:45–10:45",
+              fra: "Trondheim-Værnes (TRD), Trondheim",
+              til: "Flesland (BGO), Bergen",
+              selskap: "Norwegian Air Shuttle",
+              referanse: "XA7OZD",
+              varighet: "1h 0m",
+              status: "Bekreftet",
             }}
           />
         </Kort>
@@ -125,4 +161,3 @@ function Reise() {
     </PageShell>
   );
 }
-
