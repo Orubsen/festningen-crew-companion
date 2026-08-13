@@ -13,7 +13,7 @@ export const Route = createFileRoute("/chat")({
       {
         name: "description",
         content:
-          "Felles chat for Lisbeth, Dømbe og Røsten – planlegg Festningen 2026 i Trondheim sammen.",
+          "Felles chat for Lisbeth, Dømbe, Røsten og Leffe – planlegg Festningen 2026 i Trondheim sammen.",
       },
       { property: "og:title", content: "Crew-chat – Festningen 2026" },
       { property: "og:description", content: "Snakk sammen før og under Festningen 2026." },

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Plane, Clock } from "lucide-react";
+import { Plane, Clock, ExternalLink } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { Reisekart } from "@/components/Reisekart";
 
@@ -33,6 +33,7 @@ type Fly = {
   referanse?: string;
   varighet?: string;
   status?: string;
+  lenke?: string;
 };
 
 function FlyRad({ f, usikker }: { f: Fly; usikker?: boolean }) {
@@ -66,6 +67,16 @@ function FlyRad({ f, usikker }: { f: Fly; usikker?: boolean }) {
           </p>
         )}
       </div>
+      {f.lenke && (
+        <a
+          href={f.lenke}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 inline-flex items-center gap-1.5 rounded-md border border-border bg-secondary px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide"
+        >
+          Se bestilling <ExternalLink className="size-3.5" />
+        </a>
+      )}
     </div>
   );
 }
@@ -118,6 +129,8 @@ function Reise() {
               referanse: "XA82SJ",
               varighet: "1h 0m",
               status: "Bekreftet",
+              lenke:
+                "https://www.sas.no/book-new/revenue/flights?cartId=ef6cc863-4025-4ae3-9f54-0d23cb53ff53",
             }}
           />
         </Kort>
@@ -155,6 +168,14 @@ function Reise() {
             }}
           />
         </Kort>
+
+        <section className="panel border-dashed p-4">
+          <h2 className="font-display text-xl uppercase leading-none">Leffe</h2>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Leffe har ikke bestilt fly, hotell eller festivalpass ennå. Legges inn her så snart
+            han har booket.
+          </p>
+        </section>
 
         <Reisekart />
       </div>

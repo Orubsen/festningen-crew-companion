@@ -108,7 +108,7 @@ function Forside() {
 
       <section className="mt-8">
         <h2 className="mb-3 font-display text-xl uppercase">Crewet</h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {CREW.map((c) => (
             <CrewCard
               key={c.id}

@@ -103,7 +103,7 @@ function Sjekkliste() {
           emoji="🎟️"
           tittel="Festivalpass er IKKE kjøpt ennå"
           ordnetTittel="Festivalpass er kjøpt"
-          beskrivelse="Tre festivalpass til Festningen 4.–5. september 2026. Kjøpes via Tikkio."
+          beskrivelse="Festivalpass til Festningen 4.–5. september 2026 for Lisbeth, Dømbe og Røsten. Leffe ordner sitt eget pass. Kjøpes via Tikkio."
           lenke={FESTIVAL.billettUrl}
           lenketekst="Kjøp billetter på Tikkio"
         />
