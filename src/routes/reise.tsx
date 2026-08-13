@@ -169,6 +169,14 @@ function Reise() {
           />
         </Kort>
 
+        <section className="panel border-dashed p-4">
+          <h2 className="font-display text-xl uppercase leading-none">Leffe</h2>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Leffe har ikke bestilt fly, hotell eller festivalpass ennå. Legges inn her så snart
+            han har booket.
+          </p>
+        </section>
+
         <Reisekart />
       </div>
     </PageShell>
