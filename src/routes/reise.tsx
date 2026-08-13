@@ -67,6 +67,16 @@ function FlyRad({ f, usikker }: { f: Fly; usikker?: boolean }) {
           </p>
         )}
       </div>
+      {f.lenke && (
+        <a
+          href={f.lenke}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 inline-flex items-center gap-1.5 rounded-md border border-border bg-secondary px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide"
+        >
+          Se bestilling <ExternalLink className="size-3.5" />
+        </a>
+      )}
     </div>
   );
 }
