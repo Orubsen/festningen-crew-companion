@@ -129,6 +129,8 @@ function Reise() {
               referanse: "XA82SJ",
               varighet: "1h 0m",
               status: "Bekreftet",
+              lenke:
+                "https://www.sas.no/book-new/revenue/flights?cartId=ef6cc863-4025-4ae3-9f54-0d23cb53ff53",
             }}
           />
         </Kort>
