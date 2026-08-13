@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Info } from "lucide-react";
+import { Info, Heart } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { ArtistBilde } from "@/components/ArtistBilde";
 import { artister, DAGER } from "@/data/artister";
 import { FESTIVAL } from "@/data/festival";
+import { useLocalStorage } from "@/hooks/use-local-storage";
 
 export const Route = createFileRoute("/program")({
   head: () => ({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/program")({
       {
         name: "description",
         content:
-          "Alle 16 bekreftede artister på Festningen 2026. Dag og klokkeslett publiseres nærmere festivalstart.",
+          "Alle 16 bekreftede artister på Festningen 2026. Marker dine favoritter og filtrer «Disse artistene vil jeg se». Dag og klokkeslett publiseres nærmere festivalstart.",
       },
       { property: "og:title", content: "Program og lineup – Festningen 2026" },
       { property: "og:description", content: "16 bekreftede artister på Festningen 2026 i Trondheim." },
@@ -22,24 +23,40 @@ export const Route = createFileRoute("/program")({
   component: Program,
 });
 
-type Filter = "alle" | (typeof DAGER)[number] | "ikke-annonsert";
+type Filter = "alle" | (typeof DAGER)[number] | "ikke-annonsert" | "jeg-vil-se";
+
+const JEG_VIL_SE_KEY = "festningen-jeg-vil-se-artister";
 
 function Program() {
   const [filter, setFilter] = useState<Filter>("alle");
   const [søk, setSøk] = useState("");
+  const [ønsket, setØnsket, ønsketHydrated] = useLocalStorage<string[]>(JEG_VIL_SE_KEY, []);
+
+  const ønsketSet = useMemo(() => new Set(ønsket), [ønsket]);
+
+  const toggleArtist = (navn: string) => {
+    setØnsket((prev) => {
+      const ny = new Set(prev);
+      if (ny.has(navn)) ny.delete(navn);
+      else ny.add(navn);
+      return Array.from(ny);
+    });
+  };
 
   const liste = useMemo(() => {
     return artister.filter((a) => {
       if (søk && !a.navn.toLowerCase().includes(søk.toLowerCase())) return false;
       if (filter === "alle") return true;
       if (filter === "ikke-annonsert") return a.dag === null;
+      if (filter === "jeg-vil-se") return ønsketSet.has(a.navn);
       return a.dag === filter;
     });
-  }, [filter, søk]);
+  }, [filter, søk, ønsketSet]);
 
   const filtre: { verdi: Filter; navn: string }[] = [
     { verdi: "alle", navn: "Alle" },
     ...DAGER.map((d) => ({ verdi: d as Filter, navn: d })),
+    { verdi: "jeg-vil-se", navn: "Jeg vil se" },
     { verdi: "ikke-annonsert", navn: "Ikke annonsert" },
   ];
 
@@ -82,29 +99,49 @@ function Program() {
             }`}
           >
             {f.navn}
+            {f.verdi === "jeg-vil-se" && ønsketHydrated && ønsket.length > 0
+              ? ` (${ønsket.length})`
+              : ""}
           </button>
         ))}
       </div>
 
       <ul className="space-y-2">
-        {liste.map((a) => (
-          <li key={a.navn} className="panel flex items-center gap-3 p-3">
-            <ArtistBilde navn={a.navn} />
-            <div className="min-w-0 flex-1">
-              <p className="truncate font-display text-lg uppercase leading-none">{a.navn}</p>
-              <p className="mt-1 text-[11px] uppercase tracking-wide text-muted-foreground">
-                {a.dag
-                  ? `${a.dag}${a.klokkeslett ? ` · kl. ${a.klokkeslett}` : " · tid ikke annonsert"}${
-                      a.scene ? ` · ${a.scene}` : ""
-                    }`
-                  : "Ikke annonsert ennå"}
-              </p>
-            </div>
-          </li>
-        ))}
+        {liste.map((a) => {
+          const erØnsket = ønsketSet.has(a.navn);
+          return (
+            <li key={a.navn} className="panel flex items-center gap-3 p-3">
+              <ArtistBilde navn={a.navn} />
+              <div className="min-w-0 flex-1">
+                <p className="truncate font-display text-lg uppercase leading-none">{a.navn}</p>
+                <p className="mt-1 text-[11px] uppercase tracking-wide text-muted-foreground">
+                  {a.dag
+                    ? `${a.dag}${a.klokkeslett ? ` · kl. ${a.klokkeslett}` : " · tid ikke annonsert"}${
+                        a.scene ? ` · ${a.scene}` : ""
+                      }`
+                    : "Ikke annonsert ennå"}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => toggleArtist(a.navn)}
+                aria-label={erØnsket ? `Fjern ${a.navn} fra ønskeliste` : `Legg til ${a.navn} i ønskeliste`}
+                className={`grid size-10 shrink-0 place-items-center rounded-full border transition-colors ${
+                  erØnsket
+                    ? "border-destructive bg-destructive/20 text-destructive"
+                    : "border-border bg-secondary text-muted-foreground hover:text-primary"
+                }`}
+              >
+                <Heart className={`size-5 ${erØnsket ? "fill-current" : ""}`} />
+              </button>
+            </li>
+          );
+        })}
         {liste.length === 0 && (
           <li className="panel p-6 text-center text-sm text-muted-foreground">
-            Ingen artister matcher søket.
+            {filter === "jeg-vil-se"
+              ? "Du har ikke markert noen artister ennå. Trykk hjertet ved siden av artisten du vil se."
+              : "Ingen artister matcher søket."}
           </li>
         )}
       </ul>
