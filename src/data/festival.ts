@@ -17,9 +17,11 @@ export const FESTIVAL = {
 import lisbethBilde from "@/assets/crew-lisbeth.png.asset.json";
 import dombeBilde from "@/assets/crew-dombe.png.asset.json";
 import rostenBilde from "@/assets/crew-rosten.webp.asset.json";
+import leffeBilde from "@/assets/crew-leffe.png.asset.json";
 
 export const CREW = [
   { id: "lisbeth", navn: "Lisbeth", bilde: lisbethBilde.url, bildePosisjon: "50% 20%" },
   { id: "dombe", navn: "Dømbe", bilde: dombeBilde.url },
   { id: "rosten", navn: "Røsten", bilde: rostenBilde.url },
+  { id: "leffe", navn: "Leffe", bilde: leffeBilde.url, bildePosisjon: "50% 25%" },
 ] as const;
