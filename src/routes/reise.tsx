@@ -10,18 +10,19 @@ export const Route = createFileRoute("/reise")({
       {
         name: "description",
         content:
-          "Fly ut og hjem for crewet: SK4154 fredag 4. september, DY173 søndag 6. september (Lisbeth) og SK4187 mandag 7. september (Dømbe og Røsten).",
+          "Fly ut og hjem for crewet: SK4154 fredag 4. september, WF678 (Leffe), DY173 søndag 6. september (Lisbeth), WF681 (Leffe) og SK4187 mandag 7. september (Dømbe og Røsten).",
       },
       { property: "og:title", content: "Reiseplan – Festningen 2026" },
       {
         property: "og:description",
         content:
-          "Fly ut og hjem for crewet: SK4154 fredag 4. september, DY173 søndag 6. september og SK4187 mandag 7. september.",
+          "Fly ut og hjem for crewet: SK4154 fredag 4. september, WF678 (Leffe), DY173 søndag 6. september (Lisbeth), WF681 (Leffe) og SK4187 mandag 7. september (Dømbe og Røsten).",
       },
     ],
   }),
   component: Reise,
 });
+
 
 type Fly = {
   rute: string;
@@ -136,6 +137,25 @@ function Reise() {
         </Kort>
 
         <Kort
+          tittel="Leffes utreise"
+          dato="Fredag 4. september 2026"
+          hvem="Leffe"
+        >
+          <FlyRad
+            f={{
+              rute: "WF678",
+              tid: "12:10–13:20",
+              fra: "Bergen (BGO)",
+              til: "Trondheim (TRD)",
+              selskap: "Widerøe",
+              fly: "De Havilland DHC-8 400",
+              varighet: "1h 10m",
+              status: "Bekreftet",
+            }}
+          />
+        </Kort>
+
+        <Kort
           tittel="Lisbeths hjemreise"
           dato="Søndag 6. september 2026"
           hvem="Lisbeth"
@@ -149,6 +169,25 @@ function Reise() {
               selskap: "Norwegian Air Shuttle",
               referanse: "XA7OZD",
               varighet: "1h 0m",
+              status: "Bekreftet",
+            }}
+          />
+        </Kort>
+
+        <Kort
+          tittel="Leffes hjemreise"
+          dato="Søndag 6. september 2026"
+          hvem="Leffe"
+        >
+          <FlyRad
+            f={{
+              rute: "WF681",
+              tid: "17:10–18:20",
+              fra: "Trondheim (TRD)",
+              til: "Bergen (BGO)",
+              selskap: "Widerøe",
+              fly: "De Havilland DHC-8 400",
+              varighet: "1h 10m",
               status: "Bekreftet",
             }}
           />
@@ -169,16 +208,9 @@ function Reise() {
           />
         </Kort>
 
-        <section className="panel border-dashed p-4">
-          <h2 className="font-display text-xl uppercase leading-none">Leffe</h2>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Leffe har ikke bestilt fly, hotell eller festivalpass ennå. Legges inn her så snart
-            han har booket.
-          </p>
-        </section>
-
         <Reisekart />
       </div>
     </PageShell>
   );
 }
+
