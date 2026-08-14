@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Wind, Droplets, Thermometer, RefreshCw } from "lucide-react";
+import { RefreshCw, ExternalLink } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { hentVaer, type WeatherPoint } from "@/lib/weather.functions";
 
@@ -12,18 +12,32 @@ export const Route = createFileRoute("/vaer")({
       {
         name: "description",
         content:
-          "Live værvarsel for Trondheim fra MET Norway, med egen fremheving av festivaldagene 4.–5. september 2026.",
+          "Værtabell for Trondheim time for time, som på Yr, med egen fremheving av festivaldagene 4.–5. september 2026.",
       },
       { property: "og:title", content: "Været i Trondheim – Festningen 2026" },
-      { property: "og:description", content: "Temperatur, nedbør og vind for festivaldagene." },
+      { property: "og:description", content: "Timesvarsel: temperatur, nedbør og vind fra Yr/MET." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Vaer,
 });
 
-const fmtTid = new Intl.DateTimeFormat("nb-NO", {
+const YR_URL = "https://www.yr.no/nb/innhold/1-211102/table.html";
+
+const fmtDag = new Intl.DateTimeFormat("nb-NO", {
   timeZone: "Europe/Oslo",
-  weekday: "short",
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+});
+const fmtKlokke = new Intl.DateTimeFormat("nb-NO", {
+  timeZone: "Europe/Oslo",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+const fmtOppdatert = new Intl.DateTimeFormat("nb-NO", {
+  timeZone: "Europe/Oslo",
   day: "numeric",
   month: "short",
   hour: "2-digit",
@@ -34,55 +48,105 @@ function osloDato(iso: string) {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Oslo" }).format(new Date(iso));
 }
 
-function symbolTekst(s: string | null) {
-  if (!s) return "";
+function symbolEmoji(s: string | null) {
+  if (!s) return "·";
   const base = s.split("_")[0]!;
   const map: Record<string, string> = {
-    clearsky: "☀️ Klarvær",
-    fair: "🌤️ Lettskyet",
-    partlycloudy: "⛅ Delvis skyet",
-    cloudy: "☁️ Skyet",
-    fog: "🌫️ Tåke",
-    lightrain: "🌦️ Lett regn",
-    lightrainshowers: "🌦️ Lette regnbyger",
-    rain: "🌧️ Regn",
-    rainshowers: "🌧️ Regnbyger",
-    heavyrain: "⛈️ Kraftig regn",
-    heavyrainshowers: "⛈️ Kraftige byger",
-    sleet: "🌨️ Sludd",
-    snow: "❄️ Snø",
+    clearsky: "☀️",
+    fair: "🌤️",
+    partlycloudy: "⛅",
+    cloudy: "☁️",
+    fog: "🌫️",
+    lightrain: "🌦️",
+    lightrainshowers: "🌦️",
+    rain: "🌧️",
+    rainshowers: "🌧️",
+    heavyrain: "⛈️",
+    heavyrainshowers: "⛈️",
+    sleet: "🌨️",
+    snow: "❄️",
   };
-  return map[base] ?? base;
+  return map[base] ?? "🌡️";
 }
 
-function Rad({ p, uthevet }: { p: WeatherPoint; uthevet?: boolean }) {
+function vindPil(deg: number | null) {
+  if (deg === null) return "";
+  const retninger = ["↓", "↙", "←", "↖", "↑", "↗", "→", "↘"];
+  return retninger[Math.round(deg / 45) % 8]!;
+}
+
+function Tabell({ punkter, uthevet }: { punkter: WeatherPoint[]; uthevet?: boolean }) {
   return (
-    <li
-      className={`panel flex items-center gap-3 p-3 ${
-        uthevet ? "border-l-4 border-l-primary" : ""
-      }`}
+    <table className="w-full table-fixed text-sm tabular-nums">
+      <thead>
+        <tr className="text-[10px] uppercase tracking-wide text-muted-foreground">
+          <th className="w-16 py-1 text-left font-semibold">Kl.</th>
+          <th className="w-10 py-1 text-left font-semibold">Vær</th>
+          <th className="py-1 text-right font-semibold">Temp</th>
+          <th className="py-1 text-right font-semibold">Nedbør</th>
+          <th className="py-1 text-right font-semibold">Vind</th>
+        </tr>
+      </thead>
+      <tbody>
+        {punkter.map((p) => (
+          <tr
+            key={p.time}
+            className={`border-t border-border ${uthevet ? "" : ""}`}
+          >
+            <td className="py-1.5 text-left text-xs text-muted-foreground">
+              {fmtKlokke.format(new Date(p.time))}
+            </td>
+            <td className="py-1.5 text-left">{symbolEmoji(p.symbol)}</td>
+            <td className="py-1.5 text-right font-semibold text-primary">
+              {p.temp !== null ? `${Math.round(p.temp)}°` : "–"}
+            </td>
+            <td className="py-1.5 text-right text-sky">
+              {p.precipMm !== null && p.precipMm > 0
+                ? `${p.precipMm.toFixed(1)} mm`
+                : p.precipProb !== null
+                  ? `${Math.round(p.precipProb)} %`
+                  : "0"}
+            </td>
+            <td className="py-1.5 text-right text-mint">
+              {p.windSpeed !== null ? `${vindPil(p.windDir)} ${Math.round(p.windSpeed)}` : "–"}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function Dag({
+  dato,
+  punkter,
+  uthevet,
+}: {
+  dato: string;
+  punkter: WeatherPoint[];
+  uthevet?: boolean;
+}) {
+  const temper = punkter.map((p) => p.temp).filter((t): t is number => t !== null);
+  const min = temper.length ? Math.round(Math.min(...temper)) : null;
+  const maks = temper.length ? Math.round(Math.max(...temper)) : null;
+  return (
+    <details
+      open={uthevet}
+      className={`panel overflow-hidden ${uthevet ? "border-l-4 border-l-primary" : ""}`}
     >
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          {fmtTid.format(new Date(p.time))}
-        </p>
-        <p className="truncate text-sm">{symbolTekst(p.symbol)}</p>
+      <summary className="flex cursor-pointer items-center justify-between gap-2 p-3">
+        <span className="font-display text-base uppercase leading-none">
+          {fmtDag.format(new Date(punkter[0]!.time))}
+        </span>
+        <span className="text-sm tabular-nums text-muted-foreground">
+          {min !== null ? `${min}° / ${maks}°` : ""}
+        </span>
+      </summary>
+      <div className="px-3 pb-3">
+        <Tabell punkter={punkter} uthevet={uthevet} />
       </div>
-      <div className="flex shrink-0 items-center gap-3 text-sm tabular-nums">
-        <span className="flex items-center gap-1">
-          <Thermometer className="size-3.5 text-primary" />
-          {p.temp !== null ? `${Math.round(p.temp)}°` : "–"}
-        </span>
-        <span className="flex items-center gap-1">
-          <Droplets className="size-3.5 text-sky" />
-          {p.precipProb !== null ? `${Math.round(p.precipProb)}%` : "–"}
-        </span>
-        <span className="flex items-center gap-1">
-          <Wind className="size-3.5 text-mint" />
-          {p.windSpeed !== null ? `${Math.round(p.windSpeed)}` : "–"}
-        </span>
-      </div>
-    </li>
+      <span className="sr-only">{dato}</span>
+    </details>
   );
 }
 
@@ -96,15 +160,23 @@ function Vaer() {
   });
 
   const festivalDager = ["2026-09-04", "2026-09-05"];
-  const festivalPunkter =
-    data?.points.filter((p) => festivalDager.includes(osloDato(p.time))) ?? [];
-  const neste = data?.points.slice(0, 24) ?? [];
+
+  const grupper = new Map<string, WeatherPoint[]>();
+  for (const p of data?.points ?? []) {
+    const d = osloDato(p.time);
+    const liste = grupper.get(d) ?? [];
+    liste.push(p);
+    grupper.set(d, liste);
+  }
+  const dager = Array.from(grupper.entries());
+  const festival = dager.filter(([d]) => festivalDager.includes(d));
+  const resten = dager.filter(([d]) => !festivalDager.includes(d));
 
   return (
-    <PageShell tittel="Vær" undertittel="Trondheim · data fra MET Norway (Yr)">
-      <div className="mb-4 flex items-center justify-between">
+    <PageShell tittel="Vær" undertittel="Trondheim · timesvarsel fra Yr / MET Norway">
+      <div className="mb-4 flex items-center justify-between gap-2">
         <p className="text-xs text-muted-foreground">
-          {data ? `Oppdatert ${fmtTid.format(new Date(data.updatedAt))}` : "Henter værdata…"}
+          {data ? `Oppdatert ${fmtOppdatert.format(new Date(data.updatedAt))}` : "Henter værdata…"}
         </p>
         <button
           type="button"
@@ -135,31 +207,41 @@ function Vaer() {
             <h2 className="mb-2 font-display text-lg uppercase text-primary">
               Festivaldagene 4.–5. september
             </h2>
-            {festivalPunkter.length > 0 ? (
-              <ul className="space-y-2">
-                {festivalPunkter.map((p) => (
-                  <Rad key={p.time} p={p} uthevet />
+            {festival.length > 0 ? (
+              <div className="space-y-2">
+                {festival.map(([d, punkter]) => (
+                  <Dag key={d} dato={d} punkter={punkter} uthevet />
                 ))}
-              </ul>
+              </div>
             ) : (
               <div className="panel p-4 text-sm text-muted-foreground">
-                Værvarsel for festivaldagene er ikke tilgjengelig ennå. MET gir varsel omtrent 9–10
-                dager frem i tid – kom tilbake i slutten av august.
+                Varselet for festivaldagene er ikke ute ennå. Yr/MET gir varsel omtrent 9–10 dager
+                frem i tid – kom tilbake i slutten av august.
               </div>
             )}
           </section>
 
           <section>
-            <h2 className="mb-2 font-display text-lg uppercase">Neste 24 timer</h2>
-            <ul className="space-y-2">
-              {neste.map((p) => (
-                <Rad key={p.time} p={p} />
+            <h2 className="mb-2 font-display text-lg uppercase">Time for time</h2>
+            <div className="space-y-2">
+              {resten.map(([d, punkter], i) => (
+                <Dag key={d} dato={d} punkter={punkter} uthevet={i === 0} />
               ))}
-            </ul>
+            </div>
           </section>
 
-          <p className="mt-4 text-center text-[11px] text-muted-foreground">
-            Temperatur (°C) · nedbørssannsynlighet (%) · vind (m/s). Data fra MET Norway.
+          <a
+            href={YR_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 flex items-center justify-center gap-1.5 text-xs text-primary underline underline-offset-2"
+          >
+            Se full tabell på Yr.no <ExternalLink className="size-3" />
+          </a>
+
+          <p className="mt-2 text-center text-[11px] text-muted-foreground">
+            Temperatur (°C) · nedbør (mm, ellers sannsynlighet i %) · vind (m/s med retning). Data
+            fra MET Norway / Yr.
           </p>
         </>
       )}
