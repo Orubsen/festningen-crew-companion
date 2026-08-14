@@ -90,11 +90,20 @@ function Sjekkliste() {
     <PageShell tittel="Sjekkliste" undertittel="Dette må ordnes før avreise">
       <div className="space-y-4">
         <Banner
-          id="hotell"
+          id="hotell-ruben-adrian"
           emoji="🏨"
-          tittel="Hotell er IKKE bestilt ennå"
-          ordnetTittel="Hotell er bestilt"
-          beskrivelse="Vi trenger overnatting i Trondheim fra 4. til 7. september 2026. Se de aktuelle hotellene og leilighetene med ferdig utfylte datoer."
+          tittel="Hotell er bestilt for Dømbe & Røsten"
+          ordnetTittel="Hotell er bestilt for Dømbe & Røsten"
+          beskrivelse="Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25HFBG. Frokost inkludert."
+          lenke="/hotell"
+          lenketekst="Se hotellinfo"
+        />
+        <Banner
+          id="hotell-leffe-lisbeth"
+          emoji="🏨"
+          tittel="Hotell er IKKE bestilt for Leffe & Lisbeth ennå"
+          ordnetTittel="Hotell er bestilt for Leffe & Lisbeth"
+          beskrivelse="Leffe & Lisbeth skal dele rom på Radisson Blu Royal Garden 4.–7. september 2026."
           lenke="/hotell"
           lenketekst="Se hotellforslag"
         />
@@ -103,7 +112,7 @@ function Sjekkliste() {
           emoji="🎟️"
           tittel="Festivalpass er IKKE kjøpt ennå"
           ordnetTittel="Festivalpass er kjøpt"
-          beskrivelse="Festivalpass til Festningen 4.–5. september 2026 for Lisbeth, Dømbe og Røsten. Leffe ordner sitt eget pass. Kjøpes via Tikkio."
+          beskrivelse="Festivalpass til Festningen 4.–5. september 2026 for Lisbeth, Dømbe, Røsten og Leffe. Kjøpes via Tikkio."
           lenke={FESTIVAL.billettUrl}
           lenketekst="Kjøp billetter på Tikkio"
         />
