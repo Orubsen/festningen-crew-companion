@@ -75,7 +75,7 @@ function vindPil(deg: number | null) {
   return retninger[Math.round(deg / 45) % 8]!;
 }
 
-function Tabell({ punkter, uthevet }: { punkter: WeatherPoint[]; uthevet?: boolean }) {
+function Tabell({ punkter, uthevet }: { punkter: WeatherPoint[]; uthevet?: boolean | undefined }) {
   return (
     <table className="w-full table-fixed text-sm tabular-nums">
       <thead>
