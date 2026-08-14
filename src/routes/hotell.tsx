@@ -11,10 +11,10 @@ export const Route = createFileRoute("/hotell")({
       {
         name: "description",
         content:
-          "Aktuelle hoteller og leiligheter i Trondheim 4.–7. september 2026, med ferdig utfylte bookinglenker for crewet.",
+          "Aktuelle hoteller og leiligheter i Trondheim 4.–6. september 2026, med ferdig utfylte bookinglenker for crewet.",
       },
       { property: "og:title", content: "Hotell i Trondheim – Festningen 2026" },
-      { property: "og:description", content: "Bookinglenker for 4.–7. september 2026." },
+      { property: "og:description", content: "Bookinglenker for 4.–6. september 2026." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -53,14 +53,16 @@ function Logo({ h }: { h: Hotell }) {
 
 function HotellSide() {
   return (
-    <PageShell tittel="Hotell" undertittel="4.–7. september 2026 · Trondheim">
+      <PageShell tittel="Hotell" undertittel="Bookinglenker 4.–6. september 2026 · Trondheim">
       <div className="panel mb-4 border-l-4 border-l-success p-3 text-xs leading-relaxed">
         <p className="font-semibold text-success">Dømbe & Røsten har bestilt hotell</p>
         <p className="mt-1">
-          Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25HFBG. Frokost
-          inkludert.
+          Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25•••• (resten er
+          skjult). Frokost inkludert.
         </p>
-        <p className="mt-1">Leffe & Lisbeth skal dele rom og må fortsatt bestille.</p>
+        <p className="mt-1">
+          Leffe & Lisbeth skal dele rom 4.–6. september (to netter) og må fortsatt bestille.
+        </p>
         <a
           href="https://www.radissonhotels.com/no-no/booking/confirmation?bookingId=960da007-1f0e-4c61-9570-3560f2b4c14a&rewardsEnroll=false"
           target="_blank"

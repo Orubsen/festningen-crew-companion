@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import { Music2 } from "lucide-react";
+import { ARTISTBILDER } from "@/data/artistbilder";
 
 const CACHE_PREFIX = "festningen-artistbilde:";
 
-/** Henter artistbilde fra iTunes Search API (åpent, ingen nøkkel) og cacher i localStorage. */
+/**
+ * Viser offisielt artistbilde når vi har det. Faller tilbake til iTunes
+ * Search API (åpent, ingen nøkkel) og cacher i localStorage.
+ */
 export function ArtistBilde({ navn }: { navn: string }) {
-  const [url, setUrl] = useState<string | null>(null);
+  const offisielt = ARTISTBILDER[navn] ?? null;
+  const [url, setUrl] = useState<string | null>(offisielt);
 
   useEffect(() => {
+    if (offisielt) {
+      setUrl(offisielt);
+      return;
+    }
     let avbrutt = false;
     const nøkkel = CACHE_PREFIX + navn;
     const cachet = localStorage.getItem(nøkkel);
@@ -37,7 +46,7 @@ export function ArtistBilde({ navn }: { navn: string }) {
       avbrutt = true;
       ctrl.abort();
     };
-  }, [navn]);
+  }, [navn, offisielt]);
 
   if (!url) {
     return (
