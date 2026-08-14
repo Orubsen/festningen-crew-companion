@@ -75,7 +75,7 @@ function vindPil(deg: number | null) {
   return retninger[Math.round(deg / 45) % 8]!;
 }
 
-function Tabell({ punkter, uthevet }: { punkter: WeatherPoint[]; uthevet?: boolean | undefined }) {
+function Tabell({ punkter }: { punkter: WeatherPoint[] }) {
   return (
     <table className="w-full table-fixed text-sm tabular-nums">
       <thead>
@@ -91,7 +91,7 @@ function Tabell({ punkter, uthevet }: { punkter: WeatherPoint[]; uthevet?: boole
         {punkter.map((p) => (
           <tr
             key={p.time}
-            className={`border-t border-border ${uthevet ? "" : ""}`}
+            className="border-t border-border"
           >
             <td className="py-1.5 text-left text-xs text-muted-foreground">
               {fmtKlokke.format(new Date(p.time))}
@@ -124,7 +124,7 @@ function Dag({
 }: {
   dato: string;
   punkter: WeatherPoint[];
-  uthevet?: boolean;
+  uthevet?: boolean | undefined;
 }) {
   const temper = punkter.map((p) => p.temp).filter((t): t is number => t !== null);
   const min = temper.length ? Math.round(Math.min(...temper)) : null;
