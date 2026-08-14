@@ -55,6 +55,24 @@ function Forside() {
         <Countdown />
       </section>
 
+      <section className="panel mt-6 border-l-4 border-l-accent p-3 text-xs leading-relaxed">
+        <p className="font-display text-base uppercase leading-none text-accent">
+          Siste nytt fra Festningen
+        </p>
+        <p className="mt-2">
+          Prisen på festivalpass steg torsdag 13. august — nå er det fullpris. Rundt{" "}
+          <strong>89 % av billettene er solgt</strong>, så de som mangler pass bør ikke vente.
+        </p>
+        <a
+          href="https://nyhetsbrev.festningen.no/p/r/4yn1S6OlNACrPbkXMCvglQ4ppXbu1ZsxesBOZO0OoWU="
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 inline-block font-semibold text-accent underline underline-offset-2"
+        >
+          Les hele nyhetsbrevet
+        </a>
+      </section>
+
       <section className="mt-8 space-y-3">
         <details className="panel group overflow-hidden">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3">
