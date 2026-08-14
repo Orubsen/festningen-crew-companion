@@ -94,7 +94,7 @@ function Sjekkliste() {
           emoji="🏨"
           tittel="Hotell er bestilt for Dømbe & Røsten"
           ordnetTittel="Hotell er bestilt for Dømbe & Røsten"
-          beskrivelse="Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25HFBG. Frokost inkludert."
+          beskrivelse="Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25•••• (skjult). Frokost inkludert."
           lenke="/hotell"
           lenketekst="Se hotellinfo"
         />
@@ -103,7 +103,7 @@ function Sjekkliste() {
           emoji="🏨"
           tittel="Hotell er IKKE bestilt for Leffe & Lisbeth ennå"
           ordnetTittel="Hotell er bestilt for Leffe & Lisbeth"
-          beskrivelse="Leffe & Lisbeth skal dele rom på Radisson Blu Royal Garden 4.–7. september 2026."
+          beskrivelse="Leffe & Lisbeth skal dele rom i Trondheim 4.–6. september 2026 (to netter)."
           lenke="/hotell"
           lenketekst="Se hotellforslag"
         />
