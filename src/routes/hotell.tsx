@@ -54,29 +54,51 @@ function Logo({ h }: { h: Hotell }) {
 function HotellSide() {
   return (
     <PageShell tittel="Hotell" undertittel="4.–7. september 2026 · Trondheim">
-      <p className="panel mb-4 border-l-4 border-l-accent p-3 text-xs leading-relaxed">
-        Ingenting er booket ennå. Alle lenkene er forhåndsutfylt med datoene våre — sjekk pris og
-        avstand til Kristiansten Festning før vi bestemmer oss.
-      </p>
+      <div className="panel mb-4 border-l-4 border-l-success p-3 text-xs leading-relaxed">
+        <p className="font-semibold text-success">Dømbe & Røsten har bestilt hotell</p>
+        <p className="mt-1">
+          Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25HFBG. Frokost
+          inkludert.
+        </p>
+        <p className="mt-1">Leffe & Lisbeth skal dele rom og må fortsatt bestille.</p>
+        <a
+          href="https://www.radissonhotels.com/no-no/booking/confirmation?bookingId=960da007-1f0e-4c61-9570-3560f2b4c14a&rewardsEnroll=false"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 inline-flex items-center gap-1 text-primary underline underline-offset-2"
+        >
+          Se bekreftelse <ExternalLink className="size-3" />
+        </a>
+      </div>
 
       <ul className="space-y-2">
-        {HOTELLER.map((h) => (
-          <li key={h.lenke}>
-            <a
-              href={h.lenke}
-              target="_blank"
-              rel="noreferrer"
-              className="panel flex items-center gap-3 p-3 transition-colors hover:border-primary"
-            >
-              <Logo h={h} />
-              <div className="min-w-0 flex-1">
-                <p className="truncate font-display text-lg uppercase leading-none">{h.navn}</p>
-                <p className="mt-1 text-[11px] text-muted-foreground">{h.beskrivelse}</p>
-              </div>
-              <ExternalLink className="size-4 shrink-0 text-muted-foreground" />
-            </a>
-          </li>
-        ))}
+        {HOTELLER.map((h) => {
+          const erBestilt = h.navn === "Radisson Blu Royal Garden";
+          return (
+            <li key={h.lenke}>
+              <a
+                href={h.lenke}
+                target="_blank"
+                rel="noreferrer"
+                className="panel flex items-center gap-3 p-3 transition-colors hover:border-primary"
+              >
+                <Logo h={h} />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <p className="truncate font-display text-lg uppercase leading-none">{h.navn}</p>
+                    {erBestilt && (
+                      <span className="shrink-0 rounded-full bg-success px-2 py-0.5 text-[10px] font-bold uppercase text-success-foreground">
+                        Bestilt
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-[11px] text-muted-foreground">{h.beskrivelse}</p>
+                </div>
+                <ExternalLink className="size-4 shrink-0 text-muted-foreground" />
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </PageShell>
   );
