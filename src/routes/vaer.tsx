@@ -143,7 +143,7 @@ function Dag({
         </span>
       </summary>
       <div className="px-3 pb-3">
-        <Tabell punkter={punkter} uthevet={uthevet} />
+        <Tabell punkter={punkter} />
       </div>
       <span className="sr-only">{dato}</span>
     </details>
