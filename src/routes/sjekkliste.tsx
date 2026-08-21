@@ -112,7 +112,7 @@ function Sjekkliste() {
           emoji="🎟️"
           tittel="Festivalpass er IKKE kjøpt ennå"
           ordnetTittel="Festivalpass er kjøpt"
-          beskrivelse="Festivalpass til Festningen 4.–5. september 2026 for Lisbeth, Dømbe, Røsten og Leffe. Kjøpes via Tikkio."
+          beskrivelse="Festivalpass til Festningen 4.–5. september 2026 for Lisbeth, Dømbe, Røsten og Leffe. Kjøpes via Tikkio. Gjennom denne lenken: 1 549,- (ord. pris 2 299,-)."
           lenke={FESTIVAL.billettUrl}
           lenketekst="Kjøp billetter på Tikkio"
         />
