@@ -68,7 +68,8 @@ function Forside() {
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               Det er ikke lenge igjen til Festningen 2026, og det går rykter om at det er{" "}
               <strong className="text-destructive">få billetter igjen</strong>. Hotell og fly er på
-              plass for alle — nå mangler bare festivalpasset. Ikke vent!
+              plass for alle — nå mangler bare festivalpasset. Gjennom denne lenken får du pass til{" "}
+              <strong className="text-primary">1 549,-</strong> (ord. pris 2 299,-). Ikke vent!
             </p>
             <a
               href={FESTIVAL.billettUrl}
