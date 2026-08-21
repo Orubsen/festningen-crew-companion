@@ -55,13 +55,13 @@ function HotellSide() {
   return (
       <PageShell tittel="Hotell" undertittel="Bookinglenker 4.–6. september 2026 · Trondheim">
       <div className="panel mb-4 border-l-4 border-l-success p-3 text-xs leading-relaxed">
-        <p className="font-semibold text-success">Dømbe & Røsten har bestilt hotell</p>
+        <p className="font-semibold text-success">Alle har bestilt hotell</p>
         <p className="mt-1">
-          Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25•••• (resten er
-          skjult). Frokost inkludert.
+          Dømbe & Røsten: Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer
+          1J25•••• (resten er skjult). Frokost inkludert.
         </p>
         <p className="mt-1">
-          Leffe & Lisbeth skal dele rom 4.–6. september (to netter) og må fortsatt bestille.
+          Leffe & Lisbeth: Rom i Trondheim 4.–6. september 2026 (to netter).
         </p>
         <a
           href="https://www.radissonhotels.com/no-no/booking/confirmation?bookingId=960da007-1f0e-4c61-9570-3560f2b4c14a&rewardsEnroll=false"
@@ -69,7 +69,7 @@ function HotellSide() {
           rel="noreferrer"
           className="mt-2 inline-flex items-center gap-1 text-primary underline underline-offset-2"
         >
-          Se bekreftelse <ExternalLink className="size-3" />
+          Se bekreftelse Dømbe & Røsten <ExternalLink className="size-3" />
         </a>
       </div>
 
