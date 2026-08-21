@@ -101,11 +101,11 @@ function Sjekkliste() {
         <Banner
           id="hotell-leffe-lisbeth"
           emoji="🏨"
-          tittel="Hotell er IKKE bestilt for Leffe & Lisbeth ennå"
+          tittel="Hotell er bestilt for Leffe & Lisbeth"
           ordnetTittel="Hotell er bestilt for Leffe & Lisbeth"
-          beskrivelse="Leffe & Lisbeth skal dele rom i Trondheim 4.–6. september 2026 (to netter)."
+          beskrivelse="Leffe & Lisbeth har bestilt rom i Trondheim 4.–6. september 2026 (to netter)."
           lenke="/hotell"
-          lenketekst="Se hotellforslag"
+          lenketekst="Se hotellinfo"
         />
         <Banner
           id="billetter"

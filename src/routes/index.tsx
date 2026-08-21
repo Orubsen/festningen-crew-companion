@@ -55,6 +55,33 @@ function Forside() {
         <Countdown />
       </section>
 
+      <section
+        className="mt-6 rounded-xl border-2 border-destructive bg-destructive/15 p-4"
+        style={{ boxShadow: "0 0 0 1px oklch(0.58 0.21 27 / 0.35)" }}
+      >
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 shrink-0 text-2xl">🚨</span>
+          <div className="min-w-0 flex-1">
+            <h2 className="font-display text-xl uppercase leading-tight text-destructive">
+              Festivalpass må kjøpes nå!
+            </h2>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Det er ikke lenge igjen til Festningen 2026, og det går rykter om at det er{" "}
+              <strong className="text-destructive">få billetter igjen</strong>. Hotell og fly er på
+              plass for alle — nå mangler bare festivalpasset. Ikke vent!
+            </p>
+            <a
+              href={FESTIVAL.billettUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-primary-foreground"
+            >
+              🎟️ Kjøp pass på Tikkio
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="panel mt-6 border-l-4 border-l-accent p-3 text-xs leading-relaxed">
         <p className="font-display text-base uppercase leading-none text-accent">
           Siste nytt fra Festningen
@@ -121,8 +148,6 @@ function Forside() {
           </div>
         </details>
       </section>
-
-
 
       <section className="mt-8">
         <h2 className="mb-3 font-display text-xl uppercase">Crewet</h2>
