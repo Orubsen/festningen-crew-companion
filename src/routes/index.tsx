@@ -55,7 +55,10 @@ function Forside() {
         <Countdown />
       </section>
 
-      <section className="mt-6 rounded-xl border-2 border-destructive bg-destructive/15 p-4" style={{ boxShadow: "0 0 0 1px oklch(0.58 0.21 27 / 0.35)" }}>
+      <section
+        className="mt-6 rounded-xl border-2 border-destructive bg-destructive/15 p-4"
+        style={{ boxShadow: "0 0 0 1px oklch(0.58 0.21 27 / 0.35)" }}
+      >
         <div className="flex items-start gap-3">
           <span className="mt-0.5 shrink-0 text-2xl">🚨</span>
           <div className="min-w-0 flex-1">
@@ -64,75 +67,3 @@ function Forside() {
             </h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               Det er ikke lenge igjen til Festningen 2026, og det går rykter om at det er{
-
-      <section className="mt-8 space-y-3">
-        <details className="panel group overflow-hidden">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3">
-            <span className="font-display text-lg uppercase">🎬 Stemning</span>
-            <span className="text-[11px] uppercase tracking-wide text-muted-foreground group-open:hidden">
-              Vis video
-            </span>
-            <span className="hidden text-[11px] uppercase tracking-wide text-muted-foreground group-open:inline">
-              Skjul
-            </span>
-          </summary>
-          <div className="px-3 pb-3">
-            <video
-              src={stemningVideo.url}
-              controls
-              playsInline
-              preload="none"
-              className="w-full rounded-lg border border-border bg-black"
-            />
-          </div>
-        </details>
-
-        <details className="panel group overflow-hidden">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3">
-            <span className="font-display text-lg uppercase">🎧 Spilleliste</span>
-            <a
-              href={FESTIVAL.spotifyUrl}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="text-[11px] uppercase tracking-wide text-muted-foreground underline"
-            >
-              Åpne i Spotify
-            </a>
-          </summary>
-          <div className="px-3 pb-3">
-            <iframe
-              title="Festningen 2026 Spotify-spilleliste"
-              src={`https://open.spotify.com/embed/playlist/${FESTIVAL.spotifyPlaylistId}?utm_source=generator&theme=0`}
-              width="100%"
-              height="152"
-              loading="lazy"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              className="w-full rounded-lg border border-border"
-            />
-          </div>
-        </details>
-      </section>
-
-
-
-      <section className="mt-8">
-        <h2 className="mb-3 font-display text-xl uppercase">Crewet</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {CREW.map((c) => (
-            <CrewCard
-              key={c.id}
-              id={c.id}
-              navn={c.navn}
-              standardBilde={c.bilde}
-              {...("bildePosisjon" in c ? { bildePosisjon: c.bildePosisjon } : {})}
-            />
-          ))}
-        </div>
-        <p className="mt-2 text-center text-[11px] text-muted-foreground">
-          Trykk på et kort for å laste opp eget bilde. Bildene lagres kun i din nettleser.
-        </p>
-      </section>
-    </div>
-  );
-}
