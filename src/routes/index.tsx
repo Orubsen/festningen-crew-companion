@@ -63,13 +63,14 @@ function Forside() {
           <span className="mt-0.5 shrink-0 text-2xl">🚨</span>
           <div className="min-w-0 flex-1">
             <h2 className="font-display text-xl uppercase leading-tight text-destructive">
-              Festivalpass må kjøpes nå!
+              Lisbeth og Leffe mangler festivalpass!
             </h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Det er ikke lenge igjen til Festningen 2026, og det går rykter om at det er{" "}
-              <strong className="text-destructive">få billetter igjen</strong>. Hotell og fly er på
-              plass for alle — nå mangler bare festivalpasset. Gjennom denne lenken får du pass til{" "}
-              <strong className="text-primary">1 549,-</strong> (ord. pris 2 299,-). Ikke vent!
+              <strong className="text-success">Røsten og Dømbe kjøpte DNB-festivalpass 22. august</strong>{" "}
+              til 1 549,-. Det går rykter om at det er{" "}
+              <strong className="text-destructive">få billetter igjen</strong>, så Lisbeth og Leffe
+              bør ikke vente. Gjennom denne lenken får du pass til{" "}
+              <strong className="text-primary">1 549,-</strong> (ord. pris 2 299,-).
             </p>
             <a
               href={FESTIVAL.billettUrl}

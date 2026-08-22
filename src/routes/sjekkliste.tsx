@@ -108,11 +108,20 @@ function Sjekkliste() {
           lenketekst="Se hotellinfo"
         />
         <Banner
+          id="billetter-rosten-dombe"
+          emoji="🎟️"
+          tittel="Festivalpass er kjøpt for Røsten & Dømbe"
+          ordnetTittel="Festivalpass er kjøpt for Røsten & Dømbe"
+          beskrivelse="DNB-festivalpass kjøpt 22. august 2026 til 1 549,- for Ruben André Røsten og Adrian Dømbe. Dørene åpner 4. sep kl. 15:00, stenger 5. sep kl. 23:00. 18+."
+          lenke={FESTIVAL.billettUrl}
+          lenketekst="Se billettsiden"
+        />
+        <Banner
           id="billetter"
           emoji="🎟️"
-          tittel="Festivalpass er IKKE kjøpt ennå"
-          ordnetTittel="Festivalpass er kjøpt"
-          beskrivelse="Festivalpass til Festningen 4.–5. september 2026 for Lisbeth, Dømbe, Røsten og Leffe. Kjøpes via Tikkio. Gjennom denne lenken: 1 549,- (ord. pris 2 299,-)."
+          tittel="Festivalpass er IKKE kjøpt for Lisbeth & Leffe"
+          ordnetTittel="Festivalpass er kjøpt for Lisbeth & Leffe"
+          beskrivelse="Lisbeth og Leffe mangler fortsatt festivalpass til Festningen 4.–5. september 2026. Gjennom denne lenken: 1 549,- (ord. pris 2 299,-)."
           lenke={FESTIVAL.billettUrl}
           lenketekst="Kjøp billetter på Tikkio"
         />
