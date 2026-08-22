@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Countdown } from "@/components/Countdown";
 import { CrewCard } from "@/components/CrewCard";
 import { InstallApp } from "@/components/InstallApp";
+import { VarselKnapp } from "@/components/VarselKnapp";
 import { CREW, FESTIVAL } from "@/data/festival";
 import starAsset from "@/assets/festningen-star.png.asset.json";
 import wordmark from "@/assets/festningen-wordmark.webp.asset.json";
@@ -50,6 +51,7 @@ function Forside() {
       </section>
 
       <InstallApp />
+      <VarselKnapp />
 
       <section className="mt-6">
         <Countdown />
