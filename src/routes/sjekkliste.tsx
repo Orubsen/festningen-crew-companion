@@ -28,6 +28,7 @@ function Banner({
   beskrivelse,
   lenke,
   lenketekst,
+  standardOrdnet = false,
 }: {
   id: string;
   emoji: string;
@@ -36,8 +37,12 @@ function Banner({
   beskrivelse: string;
   lenke: string;
   lenketekst: string;
+  standardOrdnet?: boolean;
 }) {
-  const [ordnet, setOrdnet, hydrated] = useLocalStorage<boolean>(`sjekkliste-${id}`, false);
+  const [ordnet, setOrdnet, hydrated] = useLocalStorage<boolean>(
+    `sjekkliste-${id}`,
+    standardOrdnet,
+  );
   const done = hydrated && ordnet;
 
   return (
@@ -97,6 +102,7 @@ function Sjekkliste() {
           beskrivelse="Radisson Blu Royal Garden, 4.–7. september 2026. Reservasjonsnummer 1J25•••• (skjult). Frokost inkludert."
           lenke="/hotell"
           lenketekst="Se hotellinfo"
+          standardOrdnet
         />
         <Banner
           id="hotell-leffe-lisbeth"
@@ -106,13 +112,24 @@ function Sjekkliste() {
           beskrivelse="Leffe & Lisbeth har bestilt rom i Trondheim 4.–6. september 2026 (to netter)."
           lenke="/hotell"
           lenketekst="Se hotellinfo"
+          standardOrdnet
+        />
+        <Banner
+          id="billetter-rosten-dombe"
+          emoji="🎟️"
+          tittel="Festivalpass er kjøpt for Røsten & Dømbe"
+          ordnetTittel="Festivalpass er kjøpt for Røsten & Dømbe"
+          beskrivelse="DNB-festivalpass kjøpt 22. august 2026 til 1 549,- for Ruben André Røsten og Adrian Dømbe. Dørene åpner 4. sep kl. 15:00, stenger 5. sep kl. 23:00. 18+."
+          lenke={FESTIVAL.billettUrl}
+          lenketekst="Se billettsiden"
+          standardOrdnet
         />
         <Banner
           id="billetter"
           emoji="🎟️"
-          tittel="Festivalpass er IKKE kjøpt ennå"
-          ordnetTittel="Festivalpass er kjøpt"
-          beskrivelse="Festivalpass til Festningen 4.–5. september 2026 for Lisbeth, Dømbe, Røsten og Leffe. Kjøpes via Tikkio. Gjennom denne lenken: 1 549,- (ord. pris 2 299,-)."
+          tittel="Festivalpass er IKKE kjøpt for Lisbeth & Leffe"
+          ordnetTittel="Festivalpass er kjøpt for Lisbeth & Leffe"
+          beskrivelse="Lisbeth og Leffe mangler fortsatt festivalpass til Festningen 4.–5. september 2026. Gjennom denne lenken: 1 549,- (ord. pris 2 299,-)."
           lenke={FESTIVAL.billettUrl}
           lenketekst="Kjøp billetter på Tikkio"
         />

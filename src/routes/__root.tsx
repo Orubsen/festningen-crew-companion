@@ -14,6 +14,8 @@ import rostenEntLogo from "@/assets/rosten-ent-logo.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { initAnalytics, trackPageView } from "@/lib/analytics";
 import { BottomNav } from "@/components/BottomNav";
+import { Toaster } from "@/components/ui/sonner";
+import { AppVarsler } from "@/components/AppVarsler";
 
 
 function NotFoundComponent() {
@@ -209,6 +211,8 @@ function RootComponent() {
       <Outlet />
       <Footer />
       <BottomNav />
+      <AppVarsler />
+      <Toaster position="top-center" />
     </QueryClientProvider>
   );
 }
