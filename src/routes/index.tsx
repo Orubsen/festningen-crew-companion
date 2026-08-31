@@ -90,7 +90,7 @@ function Forside() {
         <img
           src={tempoAfterparty.url}
           alt="Offisielt Festningen afterparty på Club Tempo"
-          className="w-full object-cover"
+          className="max-h-56 w-full object-cover"
         />
         <div className="border-t border-border bg-background/90 p-4 backdrop-blur-sm">
           <h2 className="font-display text-xl uppercase leading-tight text-primary">
