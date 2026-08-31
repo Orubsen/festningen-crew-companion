@@ -1,11 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, ListMusic, CloudSun, Plane, ClipboardCheck, MessageSquare, Beer } from "lucide-react";
+import { Home, ListMusic, CloudSun, Plane, ClipboardCheck, MessageSquare, Beer, Ticket } from "lucide-react";
 
 const items = [
   { to: "/", label: "Forside", icon: Home },
   { to: "/program", label: "Program", icon: ListMusic },
   { to: "/vaer", label: "Vær", icon: CloudSun },
   { to: "/reise", label: "Reise", icon: Plane },
+  { to: "/band", label: "Bånd", icon: Ticket },
   { to: "/olpriser", label: "Øl", icon: Beer },
   { to: "/sjekkliste", label: "Sjekk", icon: ClipboardCheck },
   { to: "/chat", label: "Chat", icon: MessageSquare },
@@ -16,7 +17,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 backdrop-blur-md">
-      <ul className="mx-auto grid max-w-lg grid-cols-7">
+      <ul className="mx-auto grid max-w-lg grid-cols-8">
 
         {items.map(({ to, label, icon: Icon }) => {
           const active = pathname === to;
