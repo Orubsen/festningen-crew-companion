@@ -23,4 +23,11 @@ export const VARSLER: Varsel[] = [
       "Nå er det bare Leffe som mangler festivalpass. DNB-passet til 1 549,- er utsolgt, så ordinære billetter må kjøpes via den offisielle linken – og det er svært få igjen.",
     lenke: "/sjekkliste",
   },
+  {
+    id: "2026-08-31-afterparty-tempo",
+    tittel: "🪩 Offisielt afterparty på Club Tempo!",
+    tekst:
+      "Festningen og Sthu står bak offisielt afterparty på Club Tempo fredag og lørdag. Gratis inngang for alle med Festningen-bånd.",
+    lenke: "/program",
+  },
 ];
