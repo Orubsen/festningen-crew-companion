@@ -79,7 +79,7 @@ function Forside() {
               rel="noreferrer"
               className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-primary-foreground"
             >
-              🎟️ Kjøp pass på festningen.no
+              🎟️ Kjøp pass på Tikkio
             </a>
           </div>
         </div>

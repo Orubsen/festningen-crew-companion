@@ -131,7 +131,7 @@ function Sjekkliste() {
           ordnetTittel="Festivalpass er kjøpt for Leffe"
           beskrivelse="Leffe mangler fortsatt festivalpass til Festningen 4.–5. september 2026. DNB-passet til 1 549,- er utsolgt, så han må kjøpe via den offisielle linken til ordinærpris. Det er svært få billetter igjen."
           lenke={FESTIVAL.billettUrl}
-          lenketekst="Kjøp pass på festningen.no"
+          lenketekst="Kjøp pass på Tikkio"
         />
       </div>
 
