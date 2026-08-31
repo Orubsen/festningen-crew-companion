@@ -65,14 +65,13 @@ function Forside() {
           <span className="mt-0.5 shrink-0 text-2xl">🚨</span>
           <div className="min-w-0 flex-1">
             <h2 className="font-display text-xl uppercase leading-tight text-destructive">
-              Lisbeth og Leffe mangler festivalpass!
+              Kun Leffe mangler festivalpass!
             </h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              <strong className="text-success">Røsten og Dømbe kjøpte DNB-festivalpass 22. august</strong>{" "}
-              til 1 549,-. Det går rykter om at det er{" "}
-              <strong className="text-destructive">få billetter igjen</strong>, så Lisbeth og Leffe
-              bør ikke vente. Gjennom denne lenken får du pass til{" "}
-              <strong className="text-primary">1 549,-</strong> (ord. pris 2 299,-).
+              <strong className="text-success">Røsten, Dømbe og Lisbeth har sikret seg festivalpass</strong>,
+              men DNB-festivalpasset til 1 549,- er nå{" "}
+              <strong className="text-destructive">utsolgt</strong>. Leffe må kjøpe via den offisielle
+              linken til ordinærpris, og det er svært få billetter igjen.
             </p>
             <a
               href={FESTIVAL.billettUrl}
@@ -80,7 +79,7 @@ function Forside() {
               rel="noreferrer"
               className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-primary-foreground"
             >
-              🎟️ Kjøp pass på Tikkio
+              🎟️ Kjøp pass på festningen.no
             </a>
           </div>
         </div>
