@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import rostenEntLogo from "@/assets/rosten-ent-logo.png.asset.json";
+import { FESTIVAL } from "@/data/festival";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { initAnalytics, trackPageView } from "@/lib/analytics";
 import { BottomNav } from "@/components/BottomNav";
@@ -160,12 +161,12 @@ function Footer() {
           festningen.no
         </a>
         <a
-          href="https://tikkio.com/"
+          href={FESTIVAL.billettUrl}
           target="_blank"
           rel="noreferrer"
           className="text-accent underline"
         >
-          Billetter på Tikkio
+          Billetter
         </a>
       </div>
       <div className="mt-3 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
@@ -173,7 +174,7 @@ function Footer() {
           <img src={rostenEntLogo.url} alt="RØSTEN ENT. logo" className="size-8" />
         </a>
         <p>
-          Laget for · Lisbeth · Dømbe · Røsten av{" "}
+          Laget for · Lisbeth · Dømbe · Røsten · Leffe av{" "}
           <a
             href="http://xn--rubenrsten-5cb.no/"
             target="_blank"

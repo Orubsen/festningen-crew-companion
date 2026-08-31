@@ -16,4 +16,11 @@ export const VARSLER: Varsel[] = [
       "DNB-festivalpass til 1 549,- er sikret for Ruben André Røsten og Adrian Dømbe. Nå mangler bare Lisbeth og Leffe.",
     lenke: "/sjekkliste",
   },
+  {
+    id: "2026-08-31-billetter-lisbeth",
+    tittel: "🎟️ Lisbeth har kjøpt festivalpass!",
+    tekst:
+      "Nå er det bare Leffe som mangler festivalpass. DNB-passet til 1 549,- er utsolgt, så ordinære billetter må kjøpes via den offisielle linken – og det er svært få igjen.",
+    lenke: "/sjekkliste",
+  },
 ];

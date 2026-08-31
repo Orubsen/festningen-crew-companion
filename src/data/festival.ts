@@ -6,7 +6,7 @@ export const FESTIVAL = {
   doorsOpen: new Date("2026-09-04T15:30:00+02:00"),
   /** Siste hjemreise (Dømbe & Røsten, SK4187 mandag 7. september) */
   hjemreise: new Date("2026-09-07T19:50:00+02:00"),
-  billettUrl: "https://tikkio.com/t/5a7d71524ae057fb1f77d61ffadc17e1",
+  billettUrl: "https://festningen.no/billetter",
   nettsted: "https://festningen.no",
   programUrl: "https://festningen.no/program",
   hotellUrl: "https://www.booking.com/searchresults.no.html?ss=Trondheim",
