@@ -145,6 +145,27 @@ function Program() {
           </li>
         )}
       </ul>
+
+      <div className="panel mt-6 overflow-hidden border-2 border-primary/30 bg-primary/10 p-0">
+        <div className="p-3">
+          <h3 className="font-display text-lg uppercase leading-tight text-primary">
+            🪩 Offisielt afterparty: Club Tempo
+          </h3>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            Etter festivalen fortsetter kvelden på <strong className="text-foreground">Club Tempo</strong> i
+            samarbeid med <strong className="text-foreground">Sthu</strong>. Gratis inngang for alle med
+            Festningen-bånd — både fredag og lørdag.
+          </p>
+        </div>
+        <a
+          href="https://www.instagram.com/clubtempo.no/"
+          target="_blank"
+          rel="noreferrer"
+          className="block border-t border-primary/20 bg-primary/5 px-3 py-2.5 text-center text-xs font-bold uppercase tracking-wide text-primary"
+        >
+          Se Club Tempo →
+        </a>
+      </div>
     </PageShell>
   );
 }

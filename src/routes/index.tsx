@@ -7,6 +7,7 @@ import { CREW, FESTIVAL } from "@/data/festival";
 import starAsset from "@/assets/festningen-star.png.asset.json";
 import wordmark from "@/assets/festningen-wordmark.webp.asset.json";
 import stemningVideo from "@/assets/festningen-stemning.mp4.asset.json";
+import tempoAfterparty from "@/assets/tempo-afterparty.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -82,6 +83,34 @@ function Forside() {
               🎟️ Kjøp pass på Tikkio
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="relative mt-6 overflow-hidden rounded-xl border border-border bg-card/60">
+        <img
+          src={tempoAfterparty.url}
+          alt="Offisielt Festningen afterparty på Club Tempo"
+          className="w-full object-cover"
+        />
+        <div className="border-t border-border bg-background/90 p-4 backdrop-blur-sm">
+          <h2 className="font-display text-xl uppercase leading-tight text-primary">
+            Offisielt afterparty på Club Tempo
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            I samarbeid med Sthu 💥 Fredag og lørdag etter festivalen.
+          </p>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+            <strong className="text-success">Gratis inngang</strong> for alle med Festningen-bånd.
+            Perfekt sted å fortsette kvelden når scenene stenger.
+          </p>
+          <a
+            href="https://www.instagram.com/clubtempo.no/"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-primary-foreground"
+          >
+            🪩 Se Club Tempo
+          </a>
         </div>
       </section>
 
