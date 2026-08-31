@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BandRouteImport } from './routes/band'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as HotellRouteImport } from './routes/hotell'
 import { Route as OlpriserRouteImport } from './routes/olpriser'
@@ -22,6 +23,11 @@ import { Route as VaerRouteImport } from './routes/vaer'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BandRoute = BandRouteImport.update({
+  id: '/band',
+  path: '/band',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChatRoute = ChatRouteImport.update({
@@ -67,6 +73,7 @@ const VaerRoute = VaerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/band': typeof BandRoute
   '/chat': typeof ChatRoute
   '/hotell': typeof HotellRoute
   '/olpriser': typeof OlpriserRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/band': typeof BandRoute
   '/chat': typeof ChatRoute
   '/hotell': typeof HotellRoute
   '/olpriser': typeof OlpriserRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/band': typeof BandRoute
   '/chat': typeof ChatRoute
   '/hotell': typeof HotellRoute
   '/olpriser': typeof OlpriserRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/band'
     | '/chat'
     | '/hotell'
     | '/olpriser'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/band'
     | '/chat'
     | '/hotell'
     | '/olpriser'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/band'
     | '/chat'
     | '/hotell'
     | '/olpriser'
@@ -137,6 +149,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BandRoute: typeof BandRoute
   ChatRoute: typeof ChatRoute
   HotellRoute: typeof HotellRoute
   OlpriserRoute: typeof OlpriserRoute
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/band': {
+      id: '/band'
+      path: '/band'
+      fullPath: '/band'
+      preLoaderRoute: typeof BandRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chat': {
@@ -217,6 +237,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BandRoute: BandRoute,
   ChatRoute: ChatRoute,
   HotellRoute: HotellRoute,
   OlpriserRoute: OlpriserRoute,
