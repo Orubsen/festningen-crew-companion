@@ -1,11 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, ListMusic, CloudSun, Plane, ClipboardCheck, MessageSquare, Beer } from "lucide-react";
+import { Home, ListMusic, CloudSun, Plane, ClipboardCheck, MessageSquare, Beer, Ticket } from "lucide-react";
 
 const items = [
   { to: "/", label: "Forside", icon: Home },
   { to: "/program", label: "Program", icon: ListMusic },
   { to: "/vaer", label: "Vær", icon: CloudSun },
   { to: "/reise", label: "Reise", icon: Plane },
+  { to: "/band", label: "Bånd", icon: Ticket },
   { to: "/olpriser", label: "Øl", icon: Beer },
   { to: "/sjekkliste", label: "Sjekk", icon: ClipboardCheck },
   { to: "/chat", label: "Chat", icon: MessageSquare },
