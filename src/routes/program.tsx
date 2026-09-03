@@ -14,7 +14,7 @@ export const Route = createFileRoute("/program")({
       {
         name: "description",
         content:
-          "Alle 16 bekreftede artister på Festningen 2026. Marker dine favoritter og filtrer «Disse artistene vil jeg se». Dag og klokkeslett publiseres nærmere festivalstart.",
+          "Alle 16 bekreftede artister på Festningen 2026 med klokkeslett og scene. Marker dine favoritter og filtrer «Disse artistene vil jeg se».",
       },
       { property: "og:title", content: "Program og lineup – Festningen 2026" },
       { property: "og:description", content: "16 bekreftede artister på Festningen 2026 i Trondheim." },
@@ -65,8 +65,9 @@ function Program() {
       <div className="panel mb-4 flex gap-3 border-l-4 border-l-accent p-3">
         <Info className="mt-0.5 size-5 shrink-0 text-accent" />
         <p className="text-xs leading-relaxed">
-          Dagsfordelingen er sluppet: dørene åpner <strong>fredag kl. 15:30</strong> og{" "}
-          <strong>lørdag kl. 15:00</strong>. Klokkeslett per artist kommer nærmere festivalstart på{" "}
+          Programmet er sluppet med klokkeslett og scener: dørene åpner{" "}
+          <strong>fredag kl. 15:30</strong> og <strong>lørdag kl. 15:00</strong>. Se hele
+          programmet på{" "}
           <a
             href={FESTIVAL.programUrl}
             target="_blank"
@@ -74,8 +75,8 @@ function Program() {
             className="font-semibold text-accent underline"
           >
             festningen.no/program
-          </a>{" "}
-          — oppdater artist-filen når det slippes.
+          </a>
+          .
         </p>
       </div>
 
