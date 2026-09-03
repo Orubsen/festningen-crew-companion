@@ -30,4 +30,11 @@ export const VARSLER: Varsel[] = [
       "Festningen og Sthu står bak offisielt afterparty på Club Tempo fredag og lørdag. Gratis inngang for alle med Festningen-bånd.",
     lenke: "/program",
   },
+  {
+    id: "2026-09-04-program-sluppet",
+    tittel: "📋 Programmet er sluppet – med tider og scener!",
+    tekst:
+      "Fullstendig spilleplan for fredag og lørdag er ute. Det meldes strålende vær begge dager! Fra flyplassen tar vi Værnesekspressen til Bakkegata kl. 09:45 eller 10:00.",
+    lenke: "/program",
+  },
 ];
