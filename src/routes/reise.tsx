@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Plane, Clock, ExternalLink } from "lucide-react";
+import { Plane, Clock, ExternalLink, Bus } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { Reisekart } from "@/components/Reisekart";
+import vaernesLogo from "@/assets/vaernesekspressen-logo.png.asset.json";
 
 export const Route = createFileRoute("/reise")({
   head: () => ({
@@ -135,6 +136,60 @@ function Reise() {
             }}
           />
         </Kort>
+
+        <section className="panel p-4">
+          <header className="mb-3 flex items-start gap-3">
+            <span className="grid size-9 shrink-0 place-items-center rounded-md bg-primary/15 text-primary">
+              <Bus className="size-4" />
+            </span>
+            <div className="min-w-0">
+              <h2 className="font-display text-xl uppercase leading-none">Fra flyplassen</h2>
+              <p className="mt-1 text-xs uppercase tracking-wide text-accent">
+                Ankomstdag · fredag 4. september
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Værnesekspressen til Bakkegata — for alle som lander før lunsj
+              </p>
+            </div>
+          </header>
+          <div className="space-y-2">
+            <div className="rounded-md border border-border bg-secondary/50 p-3">
+              <div className="flex items-center justify-between gap-3">
+                <img
+                  src={vaernesLogo.url}
+                  alt="Værnesekspressen"
+                  className="h-7 w-auto shrink-0"
+                />
+                <p className="text-[11px] uppercase tracking-wide text-muted-foreground">
+                  Værnes → Bakkegata
+                </p>
+              </div>
+              <div className="mt-2 space-y-1 text-xs text-muted-foreground">
+                <p className="flex items-center gap-1.5">
+                  <Clock className="size-3.5 shrink-0" />
+                  Avgang <strong className="text-foreground">09:45</strong> — fremme{" "}
+                  <strong className="text-foreground">10:18</strong>
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <Clock className="size-3.5 shrink-0" />
+                  Avgang <strong className="text-foreground">10:00</strong> — fremme{" "}
+                  <strong className="text-foreground">10:33</strong>
+                </p>
+                <p className="text-[11px]">
+                  Passer fint for SK4154 (ankomst 09:35). Ta den til Bakkegata i sentrum.
+                </p>
+              </div>
+              <a
+                href="https://billett.ueb.no/no/UNI:Operator:VerExp/3?route=9&stat=1"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-flex items-center gap-1.5 rounded-md border border-border bg-secondary px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide"
+              >
+                Bestill billett <ExternalLink className="size-3.5" />
+              </a>
+            </div>
+          </div>
+        </section>
 
         <Kort
           tittel="Leffes utreise"
