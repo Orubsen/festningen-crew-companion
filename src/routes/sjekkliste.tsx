@@ -127,11 +127,12 @@ function Sjekkliste() {
         <Banner
           id="billetter-leffe"
           emoji="🎟️"
-          tittel="Festivalpass er IKKE kjøpt for Leffe"
+          tittel="Festivalpass er kjøpt for Leffe"
           ordnetTittel="Festivalpass er kjøpt for Leffe"
-          beskrivelse="Leffe mangler fortsatt festivalpass til Festningen 4.–5. september 2026. DNB-passet til 1 549,- er utsolgt, så han må kjøpe via den offisielle linken til ordinærpris. Det er svært få billetter igjen."
+          beskrivelse="Leffe har sikret seg festivalpass til Festningen 4.–5. september 2026. Alle i gjengen er nå klare for festival."
           lenke={FESTIVAL.billettUrl}
-          lenketekst="Kjøp pass på Tikkio"
+          lenketekst="Se billettsiden"
+          standardOrdnet
         />
       </div>
 
