@@ -58,21 +58,16 @@ function Forside() {
         <Countdown />
       </section>
 
-      <section
-        className="mt-6 rounded-xl border-2 border-destructive bg-destructive/15 p-4"
-        style={{ boxShadow: "0 0 0 1px oklch(0.58 0.21 27 / 0.35)" }}
-      >
+      <section className="mt-6 rounded-xl border-2 border-success bg-success/10 p-4">
         <div className="flex items-start gap-3">
-          <span className="mt-0.5 shrink-0 text-2xl">🚨</span>
+          <span className="mt-0.5 shrink-0 text-2xl">✅</span>
           <div className="min-w-0 flex-1">
-            <h2 className="font-display text-xl uppercase leading-tight text-destructive">
-              Kun Leffe mangler festivalpass!
+            <h2 className="font-display text-xl uppercase leading-tight text-success">
+              Alle har festivalpass!
             </h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              <strong className="text-success">Røsten, Dømbe og Lisbeth har sikret seg festivalpass</strong>,
-              men DNB-festivalpasset til 1 549,- er nå{" "}
-              <strong className="text-destructive">utsolgt</strong>. Leffe må kjøpe via den offisielle
-              linken til ordinærpris, og det er svært få billetter igjen.
+              <strong className="text-success">Røsten, Dømbe, Lisbeth og Leffe har sikret seg festivalpass</strong>{" "}
+              til Festningen 2026. Nå gjenstår bare nedtellingen og moroa på Kristiansten Festning.
             </p>
             <a
               href={FESTIVAL.billettUrl}
@@ -80,7 +75,7 @@ function Forside() {
               rel="noreferrer"
               className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-primary-foreground"
             >
-              🎟️ Kjøp pass på Tikkio
+              🎟️ Se billettsiden
             </a>
           </div>
         </div>
@@ -182,7 +177,7 @@ function Forside() {
       </section>
 
       <section className="mt-8">
-        <h2 className="mb-3 font-display text-xl uppercase">Crewet</h2>
+        <h2 className="mb-3 font-display text-xl uppercase">Mongoene</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {CREW.map((c) => (
             <CrewCard

@@ -37,4 +37,11 @@ export const VARSLER: Varsel[] = [
       "Fullstendig spilleplan for fredag og lørdag er ute. Det meldes strålende vær begge dager! Fra flyplassen tar vi Værnesekspressen til Bakkegata kl. 09:45 eller 10:00.",
     lenke: "/program",
   },
+  {
+    id: "2026-09-04-billetter-leffe",
+    tittel: "🎟️ Leffe har kjøpt festivalpass!",
+    tekst:
+      "Nå har alle i gjengen sikret seg festivalpass til Festningen 2026. Klart for Mongoene på Kristiansten Festning!",
+    lenke: "/sjekkliste",
+  },
 ];
