@@ -1,10 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Archive, Ticket } from "lucide-react";
+import { Home, Archive } from "lucide-react";
 
 const items = [
   { to: "/", label: "Sommerfest", icon: Home },
-  { to: "/festningen-2026", label: "2026", icon: Archive },
-  { to: "/festningen-2026", label: "Billetter", icon: Ticket },
+  { to: "/festningen-2026", label: "Festningen 2026", icon: Archive },
 ] as const;
 
 export function BottomNav() {
@@ -12,11 +11,11 @@ export function BottomNav() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 backdrop-blur-md">
-      <ul className="mx-auto grid max-w-lg grid-cols-3">
+      <ul className="mx-auto grid max-w-lg grid-cols-2">
         {items.map(({ to, label, icon: Icon }) => {
           const active = pathname === to;
           return (
-            <li key={to + label}>
+            <li key={to}>
               <Link
                 to={to}
                 className={`flex flex-col items-center gap-1 px-0.5 py-3 text-[10px] font-semibold uppercase tracking-tight transition-colors ${
