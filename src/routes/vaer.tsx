@@ -8,13 +8,13 @@ import { hentVaer, type WeatherPoint } from "@/lib/weather.functions";
 export const Route = createFileRoute("/vaer")({
   head: () => ({
     meta: [
-      { title: "Været i Trondheim – Festningen 2026 Crew" },
+      { title: "Været i Trondheim – Sommerfest 2027 Crew" },
       {
         name: "description",
         content:
-          "Værtabell for Trondheim time for time, som på Yr, med egen fremheving av festivaldagene 4.–5. september 2026.",
+          "Værtabell for Trondheim time for time, som på Yr, med egen fremheving av festivaldagene 11.–12. juni 2027.",
       },
-      { property: "og:title", content: "Været i Trondheim – Festningen 2026" },
+      { property: "og:title", content: "Været i Trondheim – Sommerfest 2027" },
       { property: "og:description", content: "Timesvarsel: temperatur, nedbør og vind fra Yr/MET." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

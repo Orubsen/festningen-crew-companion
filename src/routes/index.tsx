@@ -3,7 +3,16 @@ import { Countdown } from "@/components/Countdown";
 import { InstallApp } from "@/components/InstallApp";
 import { SOMMERFEST_2027 } from "@/data/festival";
 import sommerfestLogo from "@/assets/sommerfest-2027-logo.jpg.asset.json";
-import { Instagram, Facebook, Ticket, MapPin, Calendar, Users } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  Ticket,
+  MapPin,
+  Calendar,
+  Users,
+  CloudSun,
+  Beer,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
