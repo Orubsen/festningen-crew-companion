@@ -10,38 +10,10 @@ export type Varsel = {
 /** Legg nye varsler nederst – de vises én gang per nettleser. */
 export const VARSLER: Varsel[] = [
   {
-    id: "2026-08-22-billetter-rosten-dombe",
-    tittel: "🎟️ Røsten og Dømbe har kjøpt festivalpass!",
+    id: "2027-sommerfest-presale",
+    tittel: "🤠 Sommerfest 2027 – presale ute nå!",
     tekst:
-      "DNB-festivalpass til 1 549,- er sikret for Ruben André Røsten og Adrian Dømbe. Nå mangler bare Lisbeth og Leffe.",
-    lenke: "/sjekkliste",
-  },
-  {
-    id: "2026-08-31-billetter-lisbeth",
-    tittel: "🎟️ Lisbeth har kjøpt festivalpass!",
-    tekst:
-      "Nå er det bare Leffe som mangler festivalpass. DNB-passet til 1 549,- er utsolgt, så ordinære billetter må kjøpes via den offisielle linken – og det er svært få igjen.",
-    lenke: "/sjekkliste",
-  },
-  {
-    id: "2026-08-31-afterparty-tempo",
-    tittel: "🪩 Offisielt afterparty på Club Tempo!",
-    tekst:
-      "Festningen og Sthu står bak offisielt afterparty på Club Tempo fredag og lørdag. Gratis inngang for alle med Festningen-bånd.",
-    lenke: "/program",
-  },
-  {
-    id: "2026-09-04-program-sluppet",
-    tittel: "📋 Programmet er sluppet – med tider og scener!",
-    tekst:
-      "Fullstendig spilleplan for fredag og lørdag er ute. Det meldes strålende vær begge dager! Fra flyplassen tar vi Værnesekspressen til Bakkegata kl. 09:45 eller 10:00.",
-    lenke: "/program",
-  },
-  {
-    id: "2026-09-04-billetter-leffe",
-    tittel: "🎟️ Leffe har kjøpt festivalpass!",
-    tekst:
-      "Nå har alle i gjengen sikret seg festivalpass til Festningen 2026. Klart for Mongoene på Kristiansten Festning!",
-    lenke: "/sjekkliste",
+      "Dørene åpner fredag 11. juni 2027 kl. 16:00. Presale festivalpass koster 1 299,-. Alt fra Festningen 2026 ligger i arkiv-fanen.",
+    lenke: "https://tikkio.com/events/64533-sommerfest2027",
   },
 ];
