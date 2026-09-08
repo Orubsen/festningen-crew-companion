@@ -153,20 +153,28 @@ function Footer() {
     <footer className="mx-auto max-w-lg px-4 pb-24 pt-2 text-center">
       <div className="flex justify-center gap-4 text-xs font-semibold uppercase tracking-wide">
         <a
-          href="https://festningen.no"
+          href={SOMMERFEST_2027.nettsted}
           target="_blank"
           rel="noreferrer"
           className="text-accent underline"
         >
-          festningen.no
+          sommerfesttrd.no
         </a>
         <a
-          href={FESTIVAL.billettUrl}
+          href={SOMMERFEST_2027.billettUrl}
           target="_blank"
           rel="noreferrer"
           className="text-accent underline"
         >
           Billetter
+        </a>
+        <a
+          href={FESTIVAL.billettUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="text-muted-foreground underline"
+        >
+          Festningen 2026
         </a>
       </div>
       <div className="mt-3 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
