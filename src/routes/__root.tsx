@@ -182,7 +182,7 @@ function Footer() {
           <img src={rostenEntLogo.url} alt="RØSTEN ENT. logo" className="size-8" />
         </a>
         <p>
-          Laget for · Lisbeth · Dømbe · Røsten · Leffe av{" "}
+          Laget av{" "}
           <a
             href="http://xn--rubenrsten-5cb.no/"
             target="_blank"
