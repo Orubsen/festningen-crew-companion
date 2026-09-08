@@ -3,7 +3,16 @@ import { Countdown } from "@/components/Countdown";
 import { InstallApp } from "@/components/InstallApp";
 import { SOMMERFEST_2027 } from "@/data/festival";
 import sommerfestLogo from "@/assets/sommerfest-2027-logo.jpg.asset.json";
-import { Instagram, Facebook, Ticket, MapPin, Calendar, Users } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  Ticket,
+  MapPin,
+  Calendar,
+  Users,
+  CloudSun,
+  Beer,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,6 +135,38 @@ function Forside() {
               <strong className="text-foreground">Aldersgrense:</strong>{" "}
               {SOMMERFEST_2027.aldersgrense} år
             </span>
+          </li>
+        </ul>
+      </section>
+
+      <section className="panel mt-6 p-4">
+        <h2 className="mb-3 flex items-center gap-2 font-display text-lg uppercase text-primary">
+          Nyttig nå
+        </h2>
+        <ul className="grid grid-cols-2 gap-3">
+          <li>
+            <Link
+              to="/vaer"
+              className="flex h-full flex-col rounded-xl border border-border bg-card/60 p-4 transition-colors hover:border-primary"
+            >
+              <CloudSun className="size-6 text-primary" strokeWidth={2} />
+              <p className="mt-2 font-display text-base uppercase leading-tight">Vær</p>
+              <p className="mt-1 text-[11px] leading-snug text-muted-foreground">
+                Timesvarsel for Trondheim med fremheving av festivaldagene.
+              </p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/olpriser"
+              className="flex h-full flex-col rounded-xl border border-border bg-card/60 p-4 transition-colors hover:border-primary"
+            >
+              <Beer className="size-6 text-primary" strokeWidth={2} />
+              <p className="mt-2 font-display text-base uppercase leading-tight">Ølpriser</p>
+              <p className="mt-1 text-[11px] leading-snug text-muted-foreground">
+                Billigste øl i Trondheim – alltid aktuelt før festival.
+              </p>
+            </Link>
           </li>
         </ul>
       </section>

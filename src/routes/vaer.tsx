@@ -8,13 +8,13 @@ import { hentVaer, type WeatherPoint } from "@/lib/weather.functions";
 export const Route = createFileRoute("/vaer")({
   head: () => ({
     meta: [
-      { title: "Været i Trondheim – Festningen 2026 Crew" },
+      { title: "Været i Trondheim – Sommerfest 2027 Crew" },
       {
         name: "description",
         content:
-          "Værtabell for Trondheim time for time, som på Yr, med egen fremheving av festivaldagene 4.–5. september 2026.",
+          "Værtabell for Trondheim time for time, som på Yr, med egen fremheving av festivaldagene 11.–12. juni 2027.",
       },
-      { property: "og:title", content: "Været i Trondheim – Festningen 2026" },
+      { property: "og:title", content: "Været i Trondheim – Sommerfest 2027" },
       { property: "og:description", content: "Timesvarsel: temperatur, nedbør og vind fra Yr/MET." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -159,7 +159,7 @@ function Vaer() {
     staleTime: 30 * 60 * 1000,
   });
 
-  const festivalDager = ["2026-09-04", "2026-09-05"];
+  const festivalDager = ["2027-06-11", "2027-06-12"];
 
   const grupper = new Map<string, WeatherPoint[]>();
   for (const p of data?.points ?? []) {
@@ -205,7 +205,7 @@ function Vaer() {
         <>
           <section className="mb-6">
             <h2 className="mb-2 font-display text-lg uppercase text-primary">
-              Festivaldagene 4.–5. september
+              Festivaldagene 11.–12. juni
             </h2>
             {festival.length > 0 ? (
               <div className="space-y-2">
@@ -216,7 +216,7 @@ function Vaer() {
             ) : (
               <div className="panel p-4 text-sm text-muted-foreground">
                 Varselet for festivaldagene er ikke ute ennå. Yr/MET gir varsel omtrent 9–10 dager
-                frem i tid – kom tilbake i slutten av august.
+                frem i tid – kom tilbake i begynnelsen av juni.
               </div>
             )}
           </section>

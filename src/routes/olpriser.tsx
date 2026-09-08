@@ -13,7 +13,7 @@ import {
 export const Route = createFileRoute("/olpriser")({
   head: () => ({
     meta: [
-      { title: "Ølpriser i Trondheim – Festningen 2026 Crew" },
+      { title: "Ølpriser i Trondheim – Sommerfest 2027 Crew" },
       {
         name: "description",
         content:
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/olpriser")({
       { property: "og:title", content: "Ølpriser i Trondheim" },
       {
         property: "og:description",
-        content: "Billigste øl i Trondheim under Festningen 2026, oppdatert fra Barpris.no.",
+        content: "Billigste øl i Trondheim under Sommerfest 2027, oppdatert fra Barpris.no.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
