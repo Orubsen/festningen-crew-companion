@@ -1,7 +1,7 @@
 {
-  "name": "Festningen 2026 – Joggegjengen",
-  "short_name": "Festningen 26",
-  "description": "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
+  "name": "Sommerfest 2027 – Joggegjengen",
+  "short_name": "Sommerfest 27",
+  "description": "Personlig festivalguide for Sommerfest 2027 på Kristiansten Festning i Trondheim: nedtelling, billetter, program og praktisk info.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

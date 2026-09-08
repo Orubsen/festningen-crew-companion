@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { FESTIVAL } from "@/data/festival";
+
+export type CountdownFestival = {
+  doorsOpen: Date;
+  /** Valgfri slutt-/hjemreisedato. Hvis den er satt, vises nedtelling til denne når dørene har åpnet. */
+  slutt?: Date;
+};
 
 function diff(target: Date) {
   const ms = target.getTime() - Date.now();
@@ -26,7 +31,17 @@ function Tall({ verdi, etikett }: { verdi: number; etikett: string }) {
   );
 }
 
-export function Countdown() {
+export function Countdown({
+  festival,
+  forhåndsTekst = "Nedtelling til portene åpner",
+  underTekst,
+  etterTekst = "Festivalen er i gang – kos dere!",
+}: {
+  festival: CountdownFestival;
+  forhåndsTekst?: string;
+  underTekst?: string;
+  etterTekst?: string;
+}) {
   const [tick, setTick] = useState(0);
   const [mounted, setMounted] = useState(false);
 
@@ -41,14 +56,22 @@ export function Countdown() {
   }
 
   void tick;
-  const doors = diff(FESTIVAL.doorsOpen);
+  const doors = diff(festival.doorsOpen);
   const pågår = doors.ferdig;
-  const t = pågår ? diff(FESTIVAL.hjemreise) : doors;
+  const harSlutt = !!festival.slutt;
+  const slutt = harSlutt ? diff(festival.slutt!) : null;
+  const ferdig = slutt?.ferdig ?? false;
+
+  const t = pågår && slutt && !ferdig ? slutt : doors;
 
   return (
     <div>
       <p className="mb-2 text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-        {pågår ? "🎉 Vi er her! Nedtelling til hjemreise" : "Nedtelling til portene åpner"}
+        {ferdig
+          ? "Festivalen er over – sees neste år!"
+          : pågår && slutt
+            ? "🎉 Vi er her! Nedtelling til festivalen slutter"
+            : forhåndsTekst}
       </p>
       <div className="flex gap-2">
         <Tall verdi={t.dager} etikett="Dager" />
@@ -57,9 +80,7 @@ export function Countdown() {
         <Tall verdi={t.sek} etikett="Sek" />
       </div>
       <p className="mt-2 text-center text-xs text-muted-foreground">
-        {pågår
-          ? "Festningen pågår – kos dere!"
-          : "Portene åpner fredag 4. september 2026 kl. 15:30"}
+        {underTekst ?? (pågår && !ferdig ? etterTekst : "Portene åpner fredag 11. juni 2027 kl. 16:00")}
       </p>
     </div>
   );

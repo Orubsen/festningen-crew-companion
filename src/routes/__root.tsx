@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import rostenEntLogo from "@/assets/rosten-ent-logo.png.asset.json";
-import { FESTIVAL } from "@/data/festival";
+import { FESTIVAL, SOMMERFEST_2027 } from "@/data/festival";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { initAnalytics, trackPageView } from "@/lib/analytics";
 import { BottomNav } from "@/components/BottomNav";
@@ -84,22 +84,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: "Festningen 2026 – Joggegjengen | Festivalguide Trondheim" },
+      { title: "Sommerfest 2027 – Joggegjengen | Festivalguide Trondheim" },
       {
         name: "description",
         content:
-          "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
+          "Personlig festivalguide for Sommerfest 2027 på Kristiansten Festning i Trondheim: nedtelling, billetter, program og praktisk info.",
       },
       { name: "theme-color", content: "#101319" },
       {
         name: "google-site-verification",
         content: "4uPFfW44ywKty07OSgXpXm8L7zUU7Sc0EK4A1IOoSdI",
       },
-      { property: "og:title", content: "Festningen 2026 – Joggegjengen | Festivalguide Trondheim" },
+      { property: "og:title", content: "Sommerfest 2027 – Joggegjengen | Festivalguide Trondheim" },
       {
         property: "og:description",
         content:
-          "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
+          "Personlig festivalguide for Sommerfest 2027 på Kristiansten Festning i Trondheim: nedtelling, billetter, program og praktisk info.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -153,20 +153,28 @@ function Footer() {
     <footer className="mx-auto max-w-lg px-4 pb-24 pt-2 text-center">
       <div className="flex justify-center gap-4 text-xs font-semibold uppercase tracking-wide">
         <a
-          href="https://festningen.no"
+          href={SOMMERFEST_2027.nettsted}
           target="_blank"
           rel="noreferrer"
           className="text-accent underline"
         >
-          festningen.no
+          sommerfesttrd.no
         </a>
         <a
-          href={FESTIVAL.billettUrl}
+          href={SOMMERFEST_2027.billettUrl}
           target="_blank"
           rel="noreferrer"
           className="text-accent underline"
         >
           Billetter
+        </a>
+        <a
+          href={FESTIVAL.billettUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="text-muted-foreground underline"
+        >
+          Festningen 2026
         </a>
       </div>
       <div className="mt-3 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">

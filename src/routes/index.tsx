@@ -1,28 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Countdown } from "@/components/Countdown";
-import { CrewCard } from "@/components/CrewCard";
 import { InstallApp } from "@/components/InstallApp";
-import { VarselKnapp } from "@/components/VarselKnapp";
-import { CREW, FESTIVAL } from "@/data/festival";
-import starAsset from "@/assets/festningen-star.png.asset.json";
-import wordmark from "@/assets/festningen-wordmark.webp.asset.json";
-import stemningVideo from "@/assets/festningen-stemning.mp4.asset.json";
-import tempoAfterparty from "@/assets/tempo-afterparty.png.asset.json";
+import { SOMMERFEST_2027 } from "@/data/festival";
+import sommerfestLogo from "@/assets/sommerfest-2027-logo.jpg.asset.json";
+import { Instagram, Facebook, Ticket, MapPin, Calendar, Users } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Festningen 2026 – Joggegjengen | Festivalguide Trondheim" },
+      { title: "Sommerfest 2027 – Joggegjengen | Festivalguide Trondheim" },
       {
         name: "description",
         content:
-          "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
+          "Personlig festivalguide for Sommerfest 2027 på Kristiansten Festning i Trondheim: nedtelling, billetter, program og praktisk info.",
       },
-      { property: "og:title", content: "Festningen 2026 – Joggegjengen | Festivalguide Trondheim" },
+      { property: "og:title", content: "Sommerfest 2027 – Joggegjengen | Festivalguide Trondheim" },
       {
         property: "og:description",
         content:
-          "Personlig festivalkompanjong for Festningen 2026 på Kristiansten Festning i Trondheim: nedtelling, program, vær, reise og sjekkliste.",
+          "Personlig festivalguide for Sommerfest 2027 på Kristiansten Festning i Trondheim: nedtelling, billetter, program og praktisk info.",
       },
     ],
   }),
@@ -34,163 +30,158 @@ function Forside() {
     <div className="mx-auto w-full max-w-lg px-4 pb-28 pt-8">
       <section className="relative overflow-hidden rounded-xl border border-border bg-card/60 px-4 py-8 text-center">
         <img
-          src={starAsset.url}
-          alt=""
-          aria-hidden
-          className="pointer-events-none absolute -right-16 -top-16 w-56 opacity-15"
+          src={sommerfestLogo.url}
+          alt="Sommerfest 2027"
+          className="mx-auto mb-6 w-full max-w-xs rounded-lg"
         />
-        <img src={wordmark.url} alt="Festningen" className="mx-auto mb-4 w-52" />
-        <h1 className="font-display text-5xl uppercase leading-[0.9] text-stone-carve sm:text-6xl">
-          Festningen
+        <h1 className="font-display text-4xl uppercase leading-[0.9] text-stone-carve sm:text-5xl">
+          Sommerfest
           <br />
-          <span className="text-primary">2026</span>
+          <span className="text-primary">2027</span>
         </h1>
         <p className="mt-3 text-sm font-semibold uppercase tracking-widest text-accent">
-          {FESTIVAL.datoer}
+          {SOMMERFEST_2027.datoer}
         </p>
-        <p className="text-xs text-muted-foreground">{FESTIVAL.sted}</p>
+        <p className="text-xs text-muted-foreground">{SOMMERFEST_2027.sted}</p>
       </section>
 
       <InstallApp />
-      <VarselKnapp />
 
       <section className="mt-6">
-        <Countdown />
+        <Countdown
+          festival={SOMMERFEST_2027}
+          forhåndsTekst="Nedtelling til portene åpner"
+          underTekst="Dørene åpner fredag 11. juni 2027 kl. 16:00"
+          etterTekst="Sommerfest 2027 er i gang – kos dere!"
+        />
       </section>
 
-      <section className="mt-6 rounded-xl border-2 border-success bg-success/10 p-4">
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 shrink-0 text-2xl">✅</span>
-          <div className="min-w-0 flex-1">
-            <h2 className="font-display text-xl uppercase leading-tight text-success">
-              Alle har festivalpass!
-            </h2>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              <strong className="text-success">Røsten, Dømbe, Lisbeth og Leffe har sikret seg festivalpass</strong>{" "}
-              til Festningen 2026. Nå gjenstår bare nedtellingen og moroa på Kristiansten Festning.
+      <section className="panel mt-6 p-4">
+        <h2 className="mb-3 flex items-center gap-2 font-display text-lg uppercase text-primary">
+          <Ticket className="size-5" /> Billetter
+        </h2>
+        <div className="space-y-3">
+          <div className="rounded-lg border border-border bg-secondary/50 p-3">
+            <div className="flex items-center justify-between gap-3">
+              <p className="font-semibold text-sm">{SOMMERFEST_2027.billetter.presale.navn}</p>
+              <p className="font-display text-2xl tabular-nums text-primary">
+                {SOMMERFEST_2027.billetter.presale.pris.toLocaleString("nb-NO")},-
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground">Begrenset antall presale-billetter.</p>
+          </div>
+
+          <div className="rounded-lg border border-border bg-secondary/50 p-3">
+            <div className="flex items-center justify-between gap-3">
+              <p className="font-semibold text-sm">{SOMMERFEST_2027.billetter.plattfest.navn}</p>
+              <p className="font-display text-2xl tabular-nums text-primary">
+                {SOMMERFEST_2027.billetter.plattfest.pris.toLocaleString("nb-NO")},-
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              {SOMMERFEST_2027.billetter.plattfest.merknad} Aldersgrense{" "}
+              {SOMMERFEST_2027.billetter.plattfest.aldersgrense}+.
             </p>
-            <a
-              href={FESTIVAL.billettUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-primary-foreground"
-            >
-              🎟️ Se billettsiden
-            </a>
           </div>
         </div>
+
+        <a
+          href={SOMMERFEST_2027.billettUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground"
+        >
+          <Ticket className="size-4" /> Kjøp billetter på Tikkio
+        </a>
+        <p className="mt-2 text-center text-[11px] text-muted-foreground">
+          For bordbestilling på faktura for 6 pers eller mer, send mail til{" "}
+          <a href="mailto:vip@sommerfesttrd.no" className="text-accent underline">
+            vip@sommerfesttrd.no
+          </a>
+        </p>
       </section>
 
-      <section className="relative mt-6 overflow-hidden rounded-xl border border-border bg-card/60">
-        <img
-          src={tempoAfterparty.url}
-          alt="Offisielt Festningen afterparty på Club Tempo"
-          className="max-h-56 w-full object-cover"
-        />
-        <div className="border-t border-border bg-background/90 p-4 backdrop-blur-sm">
-          <h2 className="font-display text-xl uppercase leading-tight text-primary">
-            Offisielt afterparty på Club Tempo
-          </h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            I samarbeid med Sthu 💥 Fredag og lørdag etter festivalen.
-          </p>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-            <strong className="text-success">Gratis inngang</strong> for alle med Festningen-bånd.
-            Perfekt sted å fortsette kvelden når scenene stenger.
-          </p>
+      <section className="panel mt-6 p-4">
+        <h2 className="mb-3 flex items-center gap-2 font-display text-lg uppercase text-primary">
+          <Calendar className="size-5" /> Praktisk info
+        </h2>
+        <ul className="space-y-2 text-sm">
+          <li className="flex items-start gap-3">
+            <Calendar className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+            <span>
+              <strong className="text-foreground">Dato:</strong> {SOMMERFEST_2027.datoer}
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <MapPin className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+            <span>
+              <strong className="text-foreground">Sted:</strong> {SOMMERFEST_2027.sted}
+              <br />
+              <span className="text-xs text-muted-foreground">{SOMMERFEST_2027.adresse}</span>
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
+            <Users className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+            <span>
+              <strong className="text-foreground">Aldersgrense:</strong>{" "}
+              {SOMMERFEST_2027.aldersgrense} år
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section className="panel mt-6 p-4">
+        <h2 className="mb-3 flex items-center gap-2 font-display text-lg uppercase text-primary">
+          Følg Sommerfest
+        </h2>
+        <div className="grid grid-cols-2 gap-3">
           <a
-            href="https://www.instagram.com/clubtempo.no/"
+            href={SOMMERFEST_2027.instagram}
             target="_blank"
             rel="noreferrer"
-            className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-primary-foreground"
+            className="flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/50 px-4 py-3 text-sm font-semibold transition-colors hover:border-primary"
           >
-            🪩 Se Club Tempo
+            <Instagram className="size-4 text-primary" /> Instagram
+          </a>
+          <a
+            href={SOMMERFEST_2027.facebook}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/50 px-4 py-3 text-sm font-semibold transition-colors hover:border-primary"
+          >
+            <Facebook className="size-4 text-primary" /> Facebook
           </a>
         </div>
       </section>
 
       <section className="panel mt-6 border-l-4 border-l-accent p-3 text-xs leading-relaxed">
         <p className="font-display text-base uppercase leading-none text-accent">
-          Siste nytt fra Festningen
+          Program kommer!
         </p>
         <p className="mt-2">
-          Prisen på festivalpass steg torsdag 13. august — nå er det fullpris. Rundt{" "}
-          <strong>89 % av billettene er solgt</strong>, så de som mangler pass bør ikke vente.
+          Artistprogrammet for Sommerfest 2027 er ikke sluppet ennå. Følg med på{" "}
+          <a
+            href={SOMMERFEST_2027.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-accent underline"
+          >
+            @sommerfesttrd
+          </a>{" "}
+          for oppdateringer.
         </p>
-        <a
-          href="https://nyhetsbrev.festningen.no/p/r/4yn1S6OlNACrPbkXMCvglQ4ppXbu1ZsxesBOZO0OoWU="
-          target="_blank"
-          rel="noreferrer"
-          className="mt-2 inline-block font-semibold text-accent underline underline-offset-2"
-        >
-          Les hele nyhetsbrevet
-        </a>
       </section>
 
-      <section className="mt-8 space-y-3">
-        <details className="panel group overflow-hidden">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3">
-            <span className="font-display text-lg uppercase">🎬 Stemning</span>
-            <span className="text-[11px] uppercase tracking-wide text-muted-foreground group-open:hidden">
-              Vis video
-            </span>
-            <span className="hidden text-[11px] uppercase tracking-wide text-muted-foreground group-open:inline">
-              Skjul
-            </span>
-          </summary>
-          <div className="px-3 pb-3">
-            <video
-              src={stemningVideo.url}
-              controls
-              playsInline
-              preload="none"
-              className="w-full rounded-lg border border-border bg-black"
-            />
-          </div>
-        </details>
-
-        <details className="panel group overflow-hidden">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3">
-            <span className="font-display text-lg uppercase">🎧 Spilleliste</span>
-            <a
-              href={FESTIVAL.spotifyUrl}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="text-[11px] uppercase tracking-wide text-muted-foreground underline"
-            >
-              Åpne i Spotify
-            </a>
-          </summary>
-          <div className="px-3 pb-3">
-            <iframe
-              title="Festningen 2026 Spotify-spilleliste"
-              src={`https://open.spotify.com/embed/playlist/${FESTIVAL.spotifyPlaylistId}?utm_source=generator&theme=0`}
-              width="100%"
-              height="152"
-              loading="lazy"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              className="w-full rounded-lg border border-border"
-            />
-          </div>
-        </details>
-      </section>
-
-      <section className="mt-8">
-        <h2 className="mb-3 font-display text-xl uppercase">Mongoene</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {CREW.map((c) => (
-            <CrewCard
-              key={c.id}
-              id={c.id}
-              navn={c.navn}
-              standardBilde={c.bilde}
-              {...("bildePosisjon" in c ? { bildePosisjon: c.bildePosisjon } : {})}
-            />
-          ))}
-        </div>
-        <p className="mt-2 text-center text-[11px] text-muted-foreground">
-          Trykk på et kort for å laste opp eget bilde. Bildene lagres kun i din nettleser.
+      <section className="panel mt-6 border-l-4 border-l-primary p-3 text-xs leading-relaxed">
+        <p className="font-display text-base uppercase leading-none text-primary">
+          Festningen 2026
+        </p>
+        <p className="mt-2">
+          Alt fra fjorårets festivalguide – program, vær, reise, kart, chat og mer – ligger nå i{" "}
+          <Link to="/festningen-2026" className="font-semibold text-accent underline">
+            arkiv-fanen
+          </Link>
+          .
         </p>
       </section>
     </div>

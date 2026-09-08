@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BandRouteImport } from './routes/band'
 import { Route as ChatRouteImport } from './routes/chat'
+import { Route as Festningen2026RouteImport } from './routes/festningen-2026'
 import { Route as HotellRouteImport } from './routes/hotell'
 import { Route as KartRouteImport } from './routes/kart'
 import { Route as OlpriserRouteImport } from './routes/olpriser'
@@ -34,6 +35,11 @@ const BandRoute = BandRouteImport.update({
 const ChatRoute = ChatRouteImport.update({
   id: '/chat',
   path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Festningen2026Route = Festningen2026RouteImport.update({
+  id: '/festningen-2026',
+  path: '/festningen-2026',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HotellRoute = HotellRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/band': typeof BandRoute
   '/chat': typeof ChatRoute
+  '/festningen-2026': typeof Festningen2026Route
   '/hotell': typeof HotellRoute
   '/kart': typeof KartRoute
   '/olpriser': typeof OlpriserRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/band': typeof BandRoute
   '/chat': typeof ChatRoute
+  '/festningen-2026': typeof Festningen2026Route
   '/hotell': typeof HotellRoute
   '/kart': typeof KartRoute
   '/olpriser': typeof OlpriserRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/band': typeof BandRoute
   '/chat': typeof ChatRoute
+  '/festningen-2026': typeof Festningen2026Route
   '/hotell': typeof HotellRoute
   '/kart': typeof KartRoute
   '/olpriser': typeof OlpriserRoute
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/band'
     | '/chat'
+    | '/festningen-2026'
     | '/hotell'
     | '/kart'
     | '/olpriser'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/'
     | '/band'
     | '/chat'
+    | '/festningen-2026'
     | '/hotell'
     | '/kart'
     | '/olpriser'
@@ -149,6 +160,7 @@ export interface FileRouteTypes {
     | '/'
     | '/band'
     | '/chat'
+    | '/festningen-2026'
     | '/hotell'
     | '/kart'
     | '/olpriser'
@@ -163,6 +175,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BandRoute: typeof BandRoute
   ChatRoute: typeof ChatRoute
+  Festningen2026Route: typeof Festningen2026Route
   HotellRoute: typeof HotellRoute
   KartRoute: typeof KartRoute
   OlpriserRoute: typeof OlpriserRoute
@@ -194,6 +207,13 @@ declare module '@tanstack/react-router' {
       path: '/chat'
       fullPath: '/chat'
       preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/festningen-2026': {
+      id: '/festningen-2026'
+      path: '/festningen-2026'
+      fullPath: '/festningen-2026'
+      preLoaderRoute: typeof Festningen2026RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hotell': {
@@ -259,6 +279,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BandRoute: BandRoute,
   ChatRoute: ChatRoute,
+  Festningen2026Route: Festningen2026Route,
   HotellRoute: HotellRoute,
   KartRoute: KartRoute,
   OlpriserRoute: OlpriserRoute,
