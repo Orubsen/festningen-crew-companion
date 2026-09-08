@@ -110,8 +110,8 @@ export function InstallApp() {
           </h2>
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
             {ios
-              ? "Legg til Festningen 2026 på startskjermen for rask tilgang — det fungerer som en app."
-              : "Legg Festningen 2026 på startskjermen for rask tilgang — det fungerer som en app."}
+              ? "Legg til Sommerfest 2027 på startskjermen for rask tilgang — det fungerer som en app."
+              : "Legg Sommerfest 2027 på startskjermen for rask tilgang — det fungerer som en app."}
           </p>
 
           {deferred ? (
